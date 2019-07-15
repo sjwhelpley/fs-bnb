@@ -1,0 +1,38 @@
+<h3>Home</h3>
+
+<div>
+    <div style="display: block">
+      <canvas baseChart
+              [datasets]="rentalGraphData"
+              [labels]="rentalGraphLabels"
+              [options]="rentalGraphOptions"
+              [legend]="rentalGraphLegend"
+              [chartType]="rentalGraphType">
+      </canvas>
+    </div>
+</div>
+<div>
+    <div class="chart-container">
+      <strong class="graph-title">{{guestBookingLength.title}}</strong>
+      <canvas baseChart
+              [datasets]="guestBookingLength.data"
+              [labels]="guestBookingLength.labels"
+              [options]="guestBookingLength.options"
+              [legend]="guestBookingLength.legend"
+              [chartType]="guestBookingLength.type">
+      </canvas>
+    </div>
+</div>
+<div>
+    <div class="chart-container">
+      <strong class="graph-title">{{randomBookingLength.title}}</strong>
+      <canvas baseChart
+              [datasets]="randomBookingLength.data"
+              [labels]="randomBookingLength.labels"
+              [options]="randomBookingLength.options"
+              [legend]="randomBookingLength.legend"
+              [chartType]="randomBookingLength.type"
+              (chartClick)="chartClicked($event)">
+      </canvas>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div>
+    <div class="chart-container">
+      <strong class="graph-title">{{guestMonthlyBooking.title}}</strong>
+      <canvas baseChart
+          [datasets]="guestMonthlyBooking.data"
+          [labels]="guestMonthlyBooking.labels"
+          [options]="guestMonthlyBooking.options"
+          [legend]="guestMonthlyBooking.legend"
+          [chartType]="guestMonthlyBooking.type">
+      </canvas>
+    </div>
+</div>
