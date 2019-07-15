@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create Listing</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-input type="text" name="name" [(ngModel)]="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Location</ion-label>
+      <ion-input type="text" name="location" [(ngModel)]="location"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Price</ion-label>
+      <ion-input name="price" [(ngModel)]="price"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>Image</ion-label>
+        <ion-input name="image" [(ngModel)]="imgUrl"></ion-input>
+      </ion-item>
+    <ion-button (click)="createListing()" type="submit" block>Create</ion-button>
+  </form>
+</ion-content>

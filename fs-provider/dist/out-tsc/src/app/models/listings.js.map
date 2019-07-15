@@ -1,0 +1,1 @@
+{"version":3,"file":"listings.js","sourceRoot":"","sources":["../../../../../src/app/models/listings.ts"],"names":[],"mappings":"AAAA;IAMI,iBAAY,IAAW,EAAE,QAAe,EAAE,KAAY,EAAE,MAAa;QACjE,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC;QACjB,IAAI,CAAC,QAAQ,GAAG,QAAQ,CAAC;QACzB,IAAI,CAAC,KAAK,GAAG,KAAK,CAAC;QACnB,IAAI,CAAC,MAAM,GAAG,MAAM,CAAC;IACzB,CAAC;IACL,cAAC;AAAD,CAAC,AAZD,IAYC"}
