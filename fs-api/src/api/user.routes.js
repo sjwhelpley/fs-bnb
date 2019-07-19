@@ -1,52 +1,41 @@
 const express = require('express');
 const router = express.Router();
 
-const UserService = require('./services/user.service');
-const userService = new UserService();
+const User = require('./models/user.model');
 
 router.get("/", (req, res) => {
-  userService.getAll().then(result => {
+    User.prototype.getAllUsers((err, result) => {
+        if(err) res.status(400).json({ msg: err.message });
         res.send(result);
-    })
-    .catch(err => {
-      res.status(400).json({ msg: err.message });
     });
 });
 
 router.get("/:id", (req, res) => {
-  userService.getById(req.body).then(result => {
-      res.send(result);
-    })
-    .catch(err => {
-      res.status(400).json({ msg: err.message });
+    User.prototype.getUserById(req.params.id, (err, result) => {
+        if(err) res.status(400).json({ msg: err.message });
+        res.send(result);
     });
 });
 
 router.post("/", (req, res) => {
-  userService.create(req.body).then(result => {
-    res.send(result);
-  })
-  .catch(err => {
-    res.status(400).json({ msg: err.message });
-  });
+    User.prototype.createUser(req.body, (err, result) => {
+        if(err) res.status(400).json({ msg: err.message });
+        res.send(result);
+    });
 });
 
 router.post("/update/:id", (req, res) => {
-  userService.update(req.body).then(result => {
-    res.send(result);
-  })
-  .catch(err => {
-    res.status(400).json({ msg: err.message });
-  });
+    User.prototype.updateUser(req.params.id, req.body, (err, result) => {
+        if(err) res.status(400).json({ msg: err.message });
+        res.send(result);
+    });
 });
 
 router.get("/delete/:id", (req, res) => {
-  userService.delete(req.body).then(result => {
-    res.send(result);
-  })
-  .catch(err => {
-    res.status(400).json({ msg: err.message });
-  });
+    User.prototype.deleteUser(req.params.id, (err, result) => {
+        if(err) res.status(400).json({ msg: err.message });
+        res.send(result);
+    });
 });
 
 module.exports = router;

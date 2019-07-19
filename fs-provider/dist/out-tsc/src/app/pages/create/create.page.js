@@ -1,15 +1,17 @@
 import * as tslib_1 from "tslib";
 import { Component } from '@angular/core';
-import { ListingsService } from '../../services/listings.service';
-import { Router } from '@angular/router';
+import { ListingService } from '../../services/listing.service';
+import { NavController } from '@ionic/angular';
 var CreatePage = /** @class */ (function () {
-    function CreatePage(listingsService, router) {
-        this.listingsService = listingsService;
-        this.router = router;
+    function CreatePage(listingService, navCtrl) {
+        this.listingService = listingService;
+        this.navCtrl = navCtrl;
     }
     CreatePage.prototype.createListing = function () {
-        this.listingsService.create(this.name, this.location, this.price, this.imgUrl);
-        this.router.navigateByUrl('/tabs/tab1');
+        var _this = this;
+        this.listingService.create(this.homeType, this.address, this.maxNumPeople, this.title, this.summary, this.pricePerNight, this.rating).then(function () {
+            _this.navCtrl.navigateBack('tabs');
+        });
     };
     CreatePage = tslib_1.__decorate([
         Component({
@@ -17,8 +19,8 @@ var CreatePage = /** @class */ (function () {
             templateUrl: './create.page.html',
             styleUrls: ['./create.page.scss'],
         }),
-        tslib_1.__metadata("design:paramtypes", [ListingsService,
-            Router])
+        tslib_1.__metadata("design:paramtypes", [ListingService,
+            NavController])
     ], CreatePage);
     return CreatePage;
 }());

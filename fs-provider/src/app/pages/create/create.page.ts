@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { ListingService } from '../../services/listing.service';
-import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-create',
@@ -9,18 +9,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./create.page.scss'],
 })
 export class CreatePage {
-  name: string;
-  location: string;
-  price: number;
-  imgUrl: string;
+  homeType: string;
+  address: string;
+  maxNumPeople: number;
+  title: string;
+  summary: string;
+  pricePerNight: number;
+  rating: number;
   
   constructor(
     private listingService: ListingService,
-    private router: Router
+    private navCtrl: NavController
   ) { }
 
   createListing() {
-    this.listingService.create(this.name, this.location, this.price, this.imgUrl);
-    this.router.navigateByUrl('/tabs/tab1');
+    this.listingService.create(this.homeType, this.address, this.maxNumPeople, this.title, this.summary, this.pricePerNight, this.rating).then(() => {
+      this.navCtrl.navigateBack('tabs');
+    });
   }
 }

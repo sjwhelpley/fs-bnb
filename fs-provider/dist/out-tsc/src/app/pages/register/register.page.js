@@ -1,7 +1,7 @@
 import * as tslib_1 from "tslib";
 import { Component } from '@angular/core';
 import { NavController, AlertController } from '@ionic/angular';
-import { UserService } from "../../services/users.service";
+import { UserService } from "../../services/user.service";
 var RegisterPage = /** @class */ (function () {
     function RegisterPage(navCtrl, alertCtrl, userService) {
         this.navCtrl = navCtrl;
@@ -10,8 +10,9 @@ var RegisterPage = /** @class */ (function () {
     }
     RegisterPage.prototype.register = function () {
         var _this = this;
-        this.userService.createUser(this.firstName, this.lastName, this.cellPhone, this.email, this.password).then(function (user) {
-            _this.navCtrl.navigateForward('tabs', user);
+        console.log("Registering");
+        this.userService.register(this.firstName, this.lastName, this.cellPhone, this.email, this.password).then(function () {
+            _this.navCtrl.navigateForward('tabs');
         }).catch(function (err) {
             _this.presentAlert(err);
         });

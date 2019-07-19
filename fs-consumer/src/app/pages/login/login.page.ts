@@ -20,8 +20,8 @@ export class LoginPage {
   ) { }
 
   login() {
-    this.userService.login(this.email, this.password).then(user => {
-      this.navCtrl.navigateForward('tabs', user);
+    this.userService.login(this.email, this.password).then((response) => {
+      this.navCtrl.navigateForward('tabs');
     }).catch(err => {
       this.presentAlert(err);
     });

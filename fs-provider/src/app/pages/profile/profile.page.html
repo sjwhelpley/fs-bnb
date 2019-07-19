@@ -5,26 +5,15 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Hello, my name is {{this.profile.name}}</h2>
-
-  <ion-avatar>
-    <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-  </ion-avatar>
-
-  <p>{{this.profile.numReviews}} reviews</p>
-
-  <h4>About</h4>
-  <p>
-    <ion-icon name="pin"></ion-icon>{{this.profile.location}}<br>
-    {{this.profile.phone}}<br>
-    {{this.profile.email}}
-  </p>
-
-  <h4>Reviews</h4>
-  <ion-list>
-    <ion-item *ngFor="let rev of this.profile.reviews">
-      {{rev.name}}<br>
-      {{rev.review}}
-    </ion-item>
-  </ion-list>
+  <ion-item>
+    <ion-label><h1>Hello, {{userFirstName}} {{userLastName}}</h1></ion-label>
+    <ion-avatar slot="end">
+      <img src="../../../assets/profile.png">
+    </ion-avatar> 
+  </ion-item>
+  <ion-item>
+      <h2>Account Information</h2>
+      <h4>{{userEmail}}</h4>
+  </ion-item>
+  <ion-button size="medium" expand="block" (click)="signout()">Sign Out</ion-button>
 </ion-content>

@@ -15,7 +15,6 @@ const routes: Routes = [
     children: [
       { path: 'explore', loadChildren: '../explore/explore.module#ExplorePageModule'},
       { path: 'trips', loadChildren: '../trips/trips.module#TripsPageModule'},
-      { path: 'inbox', loadChildren: '../inbox/inbox.module#InboxPageModule'},
       { path: 'profile', loadChildren: '../profile/profile.module#ProfilePageModule'}
     ]
   },

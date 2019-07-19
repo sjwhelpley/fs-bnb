@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { UserService } from 'src/app/services/user.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-profile',
@@ -7,11 +8,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage {
-  //public profile: User = new User();
+  userFirstName: string;
+  userLastName: string;
+  userEmail: string;
 
   constructor (
-    //private usersService: UsersService
-  ) { 
-    //this.profile = this.usersService.getProfile();
+    private userService: UserService,
+    private navCtrl: NavController
+  ) {
+    this.userService.getById(this.userService.getLoggedinUserId()).then(user => {
+      this.userFirstName = user[0].firstName;
+      this.userLastName = user[0].lastName;
+      this.userEmail = user[0].email;
+    });
+  }
+
+  signout() {
+    localStorage.removeItem("userId");
+    localStorage.removeItem("jwt");
+    this.navCtrl.navigateRoot("/login");
   }
 }

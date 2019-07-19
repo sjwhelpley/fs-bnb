@@ -8,12 +8,13 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let listing of listings">
-      <div padding>
-        {{item.name}}<br>
-        {{item.location}}<br>
-        {{item.price}}
-      </div>
-    </ion-item>
+    <div *ngFor="let listing of listings">
+        <ion-card (click)="viewListing(listing.id_listing)" padding>
+          <h3>{{listing.title}}</h3><br>
+          {{listing.address}}<br>
+          {{listing.summary}}<br>
+          R{{listing.pricePerNight}}<br>
+        </ion-card>
+    </div>
   </ion-list>
 </ion-content>

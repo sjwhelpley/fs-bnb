@@ -26,15 +26,6 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'inbox',
-        children: [
-          {
-            path: '',
-            loadChildren: '../inbox/inbox.module#InboxPageModule'
-          }
-        ]
-      },
-      {
         path: 'profile',
         children: [
           {

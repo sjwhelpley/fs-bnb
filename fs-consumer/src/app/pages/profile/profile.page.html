@@ -5,11 +5,15 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Hello, {{this.currentUser.name}} {{this.currentUser.lastName}}</h2>
-
-  <!-- <ion-avatar>
-    <img src="{{this.profile.avatarUrl}}">
-  </ion-avatar> -->
-
-  <h4>About</h4>
+  <ion-item>
+    <ion-label><h1>Hello, {{userFirstName}} {{userLastName}}</h1></ion-label>
+    <ion-avatar slot="end">
+      <img src="../../../assets/profile.png">
+    </ion-avatar> 
+  </ion-item>
+  <ion-item>
+      <h2>Account Information</h2>
+      <h4>{{userEmail}}</h4>
+  </ion-item>
+  <ion-button size="medium" expand="block" (click)="signout()">Sign Out</ion-button>
 </ion-content>

@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreatePage } from './create.page';
+import { CreatePage } from '../create/create.page';
 
 describe('CreatePage', () => {
   let component: CreatePage;

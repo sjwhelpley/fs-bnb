@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { BookingService } from 'src/app/services/booking.service';
+import { Booking } from 'src/app/models/booking';
+import { Listing } from 'src/app/models/listing';
+import { ListingService } from 'src/app/services/listing.service';
 
 @Component({
   selector: 'app-trips',
@@ -6,7 +10,23 @@ import { Component } from '@angular/core';
   styleUrls: ['trips.page.scss']
 })
 export class TripsPage {
-  // get all bookings associated with logged in user's id
-  constructor() {}
+  public bookings: Booking[] = [];
+  public listings: Listing[] = [];
+  
+  constructor(
+    private bookingService: BookingService,
+    private listingService: ListingService
+  ) { }
 
+  ionViewWillEnter() {
+    this.bookingService.getUserBookings().then(bookArr => {
+      this.bookings = bookArr as Booking[];
+    });
+
+    for(let i = 0; i < this.bookings.length; i++) {
+      this.listingService.getById(this.bookings[i].id_listing).then(listArr => {
+        this.listings.push(listArr[0]);
+      });
+    }
+  }
 }

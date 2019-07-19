@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { ListingService } from '../../services/listing.service';
+import { Listing } from 'src/app/models/listing';
 
 @Component({
   selector: 'app-explore',
@@ -8,9 +9,11 @@ import { ListingService } from '../../services/listing.service';
   styleUrls: ['explore.page.scss']
 })
 export class ExplorePage {
-  public listings: any;
+  public listings: Listing[];
 
   constructor (private listingService: ListingService) {
-    this.listings = this.listingService.getAll();
+    this.listingService.getAll().then(listArr => {
+      this.listings = listArr as Listing[];
+    });
   }
 }

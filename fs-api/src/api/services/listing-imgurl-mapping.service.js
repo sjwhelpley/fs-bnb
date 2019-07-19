@@ -5,7 +5,7 @@ module.exports = class ListingImgUrlService {
 
     getAll() { 
         return new Promise((resolve, reject) => {
-            ListingImgUrl.getAll((err, res) => {
+            ListingImgUrl.prototype.getAll((err, res) => {
                 if(err) reject(err);
                 resolve(res);
             });
@@ -14,7 +14,7 @@ module.exports = class ListingImgUrlService {
 
     getById(id) {
         return new Promise((resolve, reject) => {
-            ListingImgUrl.getById(id, (err, res) => {
+            ListingImgUrl.prototype.getById(id, (err, res) => {
                 if(err) reject(err);
                 resolve(res);
             });
@@ -23,7 +23,7 @@ module.exports = class ListingImgUrlService {
 
     create(newListingImgUrl) { 
         return new Promise((resolve, reject) => {
-            ListingImgUrl.create(newListingImgUrl, (err, res) => {
+            ListingImgUrl.prototype.create(newListingImgUrl, (err, res) => {
                 if(err) reject(err);
                 resolve(res);
             });
@@ -32,7 +32,7 @@ module.exports = class ListingImgUrlService {
 
     update(id) { 
         return new Promise((resolve, reject) => {
-            ListingImgUrl.update(id, (err, res) => {
+            ListingImgUrl.prototype.update(id, (err, res) => {
                 if(err) reject(err);
                 resolve(res);
             });
@@ -41,7 +41,7 @@ module.exports = class ListingImgUrlService {
 
     delete(id) { 
         return new Promise((resolve, reject) => {
-            ListingImgUrl.delete(id, (err, res) => {
+            ListingImgUrl.prototype.delete(id, (err, res) => {
                 if(err) reject(err);
                 resolve(res);
             });

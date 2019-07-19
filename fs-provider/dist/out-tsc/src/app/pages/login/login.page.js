@@ -1,17 +1,19 @@
 import * as tslib_1 from "tslib";
 import { Component } from '@angular/core';
 import { AlertController, NavController } from '@ionic/angular';
-import { UserService } from '../../services/users.service';
+import { UserService } from '../../services/user.service';
 var LoginPage = /** @class */ (function () {
-    function LoginPage(alertCtrl, navCtrl, usersService) {
+    function LoginPage(alertCtrl, navCtrl, userService) {
         this.alertCtrl = alertCtrl;
         this.navCtrl = navCtrl;
-        this.usersService = usersService;
+        this.userService = userService;
     }
     LoginPage.prototype.login = function () {
         var _this = this;
-        this.usersService.login(this.email, this.password).then(function (user) {
-            _this.navCtrl.navigateForward('tabs', user);
+        this.userService.login(this.email, this.password).then(function (response) {
+            localStorage.setItem("userId", response.user.id.toString());
+            localStorage.setItem("jwt", response.jwt.toString());
+            _this.navCtrl.navigateForward('tabs');
         }).catch(function (err) {
             _this.presentAlert(err);
         });

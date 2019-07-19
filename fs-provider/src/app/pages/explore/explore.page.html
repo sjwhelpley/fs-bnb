@@ -3,6 +3,9 @@
     <ion-title>
       Listings
     </ion-title>
+    <ion-button slot="primary" expand="block" routerLink="/create">
+      <ion-icon name="add"></ion-icon>
+    </ion-button>
   </ion-toolbar>
   
 </ion-header>
@@ -10,14 +13,11 @@
 <ion-content padding>
   
   <ion-list>
-    <ion-button expand="block" routerLink="/create">
-      <ion-icon name="add"></ion-icon>
-    </ion-button>
-    <ion-item *ngFor="let item of items">
-      <div padding>
-        {{item.name}}<br>
-        {{item.location}}<br>
-        {{item.price}}
+    <ion-item *ngFor="let listing of listings">
+      <h3>{{listing.title}}</h3><br>
+          {{listing.address}}<br>
+          {{listing.summary}}<br>
+          R{{listing.pricePerNight}}<br>
 
         <div>
           <ion-button expand="block" routerLink="/view">
@@ -27,7 +27,7 @@
             <ion-icon name="create"></ion-icon>
           </ion-button> 
         </div>
-      </div>
     </ion-item>
   </ion-list>
+  
 </ion-content>

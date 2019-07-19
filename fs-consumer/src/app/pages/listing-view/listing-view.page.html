@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      View Listing
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-card>
+      <div padding>
+        <h3>{{listing.title}}</h3><br>
+        {{listing.address}}<br>
+        {{listing.pricePerNight}}<br>
+      </div>
+    </ion-card>
+  </ion-list>
+  <ion-button (click)="backToExplore()"><ion-icon name="arrow-back"></ion-icon></ion-button>
+  <ion-button (click)="book()">Book Now</ion-button>
+</ion-content>

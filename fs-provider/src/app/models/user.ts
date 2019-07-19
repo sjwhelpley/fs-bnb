@@ -1,17 +1,17 @@
 export class User {
-    firstName: String;
-    lastName: String;
-    cellPhone: String;
-    email: String;
-    password: String;
-    role: String;
+    id: string;
+    firstName: string;
+    lastName: string;
+    cellPhone: string;
+    email: string;
+    password: string;
 
-    constructor(firstName: String, lastName: String, cellPhone: String, email: String, password: String) {
+    constructor(firstName: string, lastName: string, cellPhone: string, email: string, password: string) {
+        this.id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.cellPhone = cellPhone;
         this.email = email;
         this.password = password;
-        this.role = "service provider";
     } 
 }

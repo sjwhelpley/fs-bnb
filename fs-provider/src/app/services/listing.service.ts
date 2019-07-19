@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Listing } from '../models/listing';
 
@@ -12,16 +12,30 @@ export class ListingService {
 
   getAll() {
     return new Promise((resolve, reject) => {
-      this.http.get('http://localhost:5000/api/listings/').subscribe((response) => {
+      const token = localStorage.getItem("jwt");
+      const httpOptions = { headers: new HttpHeaders(
+        {
+          'Content-Type':  'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      )};
+      this.http.get('http://localhost:5000/api/listing/', httpOptions).subscribe((response) => {
         resolve(response);
       });
     });
   }
 
-  create(name, location, price, imgUrl) {
-    const newListing = new Listing(name, location, price, imgUrl);
+  create(homeType, address, maxNumPeople, title, summary, pricePerNight, rating) {
+    const token = localStorage.getItem("jwt");
+    const httpOptions = { headers: new HttpHeaders(
+      {
+        'Content-Type':  'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    )};
+    const newListing = new Listing(homeType, address, maxNumPeople, title, summary, pricePerNight, rating);
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost:5000/api/listings/', JSON.stringify(newListing)).subscribe((response) => {
+      this.http.post('http://localhost:5000/api/listing/', JSON.stringify(newListing), httpOptions).subscribe((response) => {
         resolve(response);
       });
     });

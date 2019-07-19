@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const jwtAuth = require('./src/api/middleware/jwtAuth'); // middleware
 
 app.use(cors());
 
@@ -8,7 +9,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.use(jwtAuth);
+
 app.use('/api/user', require('./src/api/user.routes'));
+app.use('/api/provider', require('./src/api/provider.routes'));
 app.use('/api/auth', require('./src/api/auth.routes'));
 app.use('/api/listing', require('./src/api/listing.routes'));
 app.use('/api/booking', require('./src/api/booking.routes'));

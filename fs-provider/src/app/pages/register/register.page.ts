@@ -21,8 +21,8 @@ export class RegisterPage {
     private userService: UserService ) { }
 
   register() {
-    this.userService.createUser(this.firstName, this.lastName, this.cellPhone, this.email, this.password).then(user => {
-      this.navCtrl.navigateForward('tabs', user);
+    this.userService.register(this.firstName, this.lastName, this.cellPhone, this.email, this.password).then(() =>{
+      this.navCtrl.navigateForward('tabs');
     }).catch(err => {
       this.presentAlert(err);
     });

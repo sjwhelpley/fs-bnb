@@ -7,10 +7,24 @@
 </ion-header>
 
 <ion-content padding>
-  <p>You have no upcoming trips.</p>
+  <div *ngIf="bookings.length == 0">
+    <p>You have no upcoming trips.</p>
 
-  <p>Start planning your next trip!</p>
-  <ion-button expand="block" routerLink="/tabs/tab1" routerDirection="backward">
-    Explore Airbnb
-  </ion-button>
+    <p>Start planning your next trip!</p>
+    <ion-button expand="block" routerLink="/tabs/explore" routerDirection="backward">
+      Explore Airbnb
+    </ion-button>
+  </div>
+  <div *ngIf="bookings.length != 0">
+    <ion-list>
+        <div *ngFor="let booking of bookings, let i = index">
+            <ion-card padding>
+              <h3>{{listings[i].title}}</h3><br>
+              {{listings[i].address}}<br>
+              {{booking.numPeople}} people<br>
+              {{booking.startDate}} to {{booking.endDate}}<br>
+            </ion-card>
+        </div>
+      </ion-list>
+  </div>
 </ion-content>

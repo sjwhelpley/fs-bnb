@@ -1,10 +1,13 @@
 import * as tslib_1 from "tslib";
 import { Component } from '@angular/core';
-import { ListingsService } from '../../services/listings.service';
+import { ListingService } from '../../services/listing.service';
 var ExplorePage = /** @class */ (function () {
-    function ExplorePage(listingsService) {
-        this.listingsService = listingsService;
-        this.listings = this.listingsService.getAll();
+    function ExplorePage(listingService) {
+        var _this = this;
+        this.listingService = listingService;
+        this.listingService.getAll().then(function (listArr) {
+            _this.listings = listArr;
+        });
     }
     ExplorePage = tslib_1.__decorate([
         Component({
@@ -12,7 +15,7 @@ var ExplorePage = /** @class */ (function () {
             templateUrl: 'explore.page.html',
             styleUrls: ['explore.page.scss']
         }),
-        tslib_1.__metadata("design:paramtypes", [ListingsService])
+        tslib_1.__metadata("design:paramtypes", [ListingService])
     ], ExplorePage);
     return ExplorePage;
 }());

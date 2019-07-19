@@ -5,7 +5,7 @@ module.exports = class BookingService {
 
     getAll() { 
         return new Promise((resolve, reject) => {
-            Booking.getAll((err, res) => {
+            Booking.prototype.getAll((err, res) => {
                 if(err) reject(err);
                 resolve(res);
             });
@@ -14,7 +14,17 @@ module.exports = class BookingService {
 
     getById(id) {
         return new Promise((resolve, reject) => {
-            Booking.getById(id, (err, res) => {
+            Booking.prototype.getById(id, (err, res) => {
+                if(err) reject(err);
+                resolve(res);
+            });
+        });
+    }
+
+    getByUserId(id) {
+        return new Promise((resolve, reject) => {
+            console.log("In booking service with user id" + id);
+            Booking.prototype.getByUserId(id, (err, res) => {
                 if(err) reject(err);
                 resolve(res);
             });
@@ -23,7 +33,7 @@ module.exports = class BookingService {
 
     create(newBooking) { 
         return new Promise((resolve, reject) => {
-            Booking.create(newBooking, (err, res) => {
+            Booking.prototpye.create(newBooking, (err, res) => {
                 if(err) reject(err);
                 resolve(res);
             });
@@ -32,7 +42,7 @@ module.exports = class BookingService {
 
     update(id) { 
         return new Promise((resolve, reject) => {
-            Booking.update(id, (err, res) => {
+            Booking.prototype.update(id, (err, res) => {
                 if(err) reject(err);
                 resolve(res);
             });
@@ -41,7 +51,7 @@ module.exports = class BookingService {
 
     delete(id) { 
         return new Promise((resolve, reject) => {
-            Booking.delete(id, (err, res) => {
+            Booking.prototype.delete(id, (err, res) => {
                 if(err) reject(err);
                 resolve(res);
             });
