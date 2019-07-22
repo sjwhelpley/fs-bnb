@@ -32,7 +32,7 @@ module.exports = class Booking {
     }
 
     getByUserId(id, result) {
-        mysqlConn.query("SELECT * FROM booking WHERE id = ? ", id, function(err, res) {
+        mysqlConn.query("SELECT * FROM booking WHERE id_user = ? ", id, function(err, res) {
             if (err) {
                 result(err, null);
             } else {

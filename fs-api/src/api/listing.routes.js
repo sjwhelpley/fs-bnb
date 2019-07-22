@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const Listing = require("./models/listing.model");
+const ListingImgUrl = require ("./models/listing-imgurl-mapping.model");
 
 router.get("/", (req, res) => {
   Listing.prototype.getAll((err, result) => {
@@ -12,6 +13,13 @@ router.get("/", (req, res) => {
   
 router.get("/:id", (req, res) => {
   Listing.prototype.getById(req.params.id, (err, result) => {
+      if(err) res.status(400).json({ msg: err.message });
+      res.send(result);
+    });
+});
+
+router.get("/img/:id", (req, res) => {
+  ListingImgUrl.prototype.getByListingId(req.params.id, (err, result) => {
       if(err) res.status(400).json({ msg: err.message });
       res.send(result);
     });

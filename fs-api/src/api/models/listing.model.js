@@ -9,6 +9,7 @@ module.exports = class Listing {
         this.title = title;
         this.summary = summary;
         this.pricePerNight = pricePerNight;
+        this.id_provider;
     }
     
     getAll(result) {
@@ -22,7 +23,7 @@ module.exports = class Listing {
     }
 
     getById(id, result) {
-        mysqlConn.query("SELECT * FROM listing WHERE id_listing = ?", id, function(err, res) {
+        mysqlConn.query("SELECT * FROM listing WHERE id = ?", id, function(err, res) {
             if (err) {
                 result(err, null);
             } else {

@@ -1,18 +1,18 @@
 export class Booking {
-    id_booking: number;
+    id: number;
     numPeople: number;
     startDate: string;
     endDate: string;
     id_listing: number;
-    id_consumer: number;
+    id_user: number;
 
-    constructor(numPeople, startDate, endDate, id_listing, id_consumer) {
-        this.id_booking;
+    constructor(numPeople, startDate, endDate, id_listing, id_user) {
+        this.id;
         this.numPeople = numPeople;
         this.startDate = startDate;
         this.endDate = endDate;
         this.id_listing = id_listing;
-        this.id_consumer = id_consumer;
+        this.id_user = id_user;
     }
 
 }

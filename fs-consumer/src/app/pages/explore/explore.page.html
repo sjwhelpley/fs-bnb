@@ -9,7 +9,12 @@
 <ion-content padding>
   <ion-list>
     <div *ngFor="let listing of listings">
-        <ion-card (click)="viewListing(listing.id_listing)" padding>
+        <ion-card (click)="viewListing(listing.id)" padding>
+          <ion-slides *ngFor="let image of images[listing.id]">
+            <ion-slide>
+              <img src="{{image}}" />
+            </ion-slide>
+          </ion-slides>
           <h3>{{listing.title}}</h3><br>
           {{listing.address}}<br>
           {{listing.summary}}<br>

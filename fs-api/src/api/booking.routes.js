@@ -17,10 +17,20 @@ router.get("/:id", (req, res) => {
     });
 });
 
+router.get("/user/:id", (req, res) => {
+  Booking.prototype.getByUserId(req.params.id, (err, result) => {
+      if(err) res.status(400).json({ msg: err.message });
+      res.send(result);
+    });
+});
+
 router.post("/", (req, res) => {
-  Lisitng.prototype.create(req.body, (err, result) => {
-    if(err) res.status(400).json({ msg: err.message });
-    res.send(result);
+  Booking.prototype.create(req.body, (err, result) => {
+    if(err) {
+      res.status(400).json({ msg: err.message });
+    } else {
+      res.send(result);
+    }
   });
 });
 

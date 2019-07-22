@@ -2,7 +2,7 @@ var mysqlConn = require("../../database/database");
 
 module.exports = class ListingImgUrl {
     constructor(id_listing, imgUrl) {
-        this.id_imgurl;
+        this.id;
         this.id_listing = id_listing;
         this.imgUrl = imgUrl;
     }
@@ -19,8 +19,8 @@ module.exports = class ListingImgUrl {
         });
     }
     
-    getById(id, result) {
-        mysqlConn.query("SELECT * FROM listingImgUrl WHERE id = ? ", id, function(err, res) {
+    getByListingId(id, result) {
+        mysqlConn.query("SELECT imgUrl FROM listingImgUrl WHERE id_listing = ? ", id, function(err, res) {
             if (err) {
                 console.log("error: ", err);
                 result(err, null);

@@ -20,6 +20,10 @@ export class ListingViewPage {
     this.navCtrl.navigateBack('tabs/explore')
   }
 
+  book(id_listing) {
+    this.listingService.presentAlert(id_listing);
+  }
+
   ionViewWillEnter() { 
     this.listingService.getViewListing().then((list: Listing[]) => {
       this.listing = list[0];

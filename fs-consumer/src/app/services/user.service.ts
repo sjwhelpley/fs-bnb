@@ -18,12 +18,14 @@ export class UserService {
     };
     return new Promise((resolve, reject) => {
       let data = `{"email":"${email}","password":"${password}"}`;
-      this.http.post('http://localhost:5000/api/auth/login/user', data, httpOptions).subscribe((response: any) => {
+      this.http.post('http://localhost:5000/api/auth/login/user', data, httpOptions).subscribe((response: any) => { 
         localStorage.setItem('userId', response.user.id);
         localStorage.setItem('jwt', response.jwt);
         resolve(response);
       });
-    });
+    }).catch(err => {
+      return err;
+    })
   }
 
   register(firstName, lastName, cellPhone, email, password) {
@@ -35,11 +37,14 @@ export class UserService {
     const newUser = new User(firstName, lastName, cellPhone, email, password);
     return new Promise((resolve, reject) => {
       this.http.post('http://localhost:5000/api/auth/register/user', JSON.stringify(newUser), httpOptions).subscribe((response: any) => {
+        console.log(response.jwt);
         localStorage.setItem("userId", response.user.id);
         localStorage.setItem("jwt", response.jwt);
         resolve(response);
       });
-    });
+    }).catch(err => {
+      return err;
+    })
   }
 
   getLoggedinUserId() {

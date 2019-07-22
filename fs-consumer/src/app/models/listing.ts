@@ -1,5 +1,5 @@
 export class Listing {
-    id_listing: number;
+    id: number;
     homeType: string;
     address: string;
     maxNumPeople: number;
@@ -10,7 +10,7 @@ export class Listing {
     id_provider: number;
 
     constructor(homeType, address, maxNumPeople, title, summary, pricePerNight, rating) {
-        this.id_listing;
+        this.id;
         this.homeType = homeType;
         this.address = address;
         this.maxNumPeople = maxNumPeople;

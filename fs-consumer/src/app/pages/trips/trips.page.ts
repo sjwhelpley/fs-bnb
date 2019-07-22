@@ -19,7 +19,7 @@ export class TripsPage {
   ) { }
 
   ionViewWillEnter() {
-    this.bookingService.getUserBookings().then(bookArr => {
+    this.bookingService.getBookingsByUserId().then(bookArr => {
       this.bookings = bookArr as Booking[];
     });
 

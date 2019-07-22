@@ -17,7 +17,7 @@ export class ProfilePage {
     private userService: UserService,
     private navCtrl: NavController
   ) {
-    this.userService.getUserById(this.userService.getLoggedinUserId()).then(user => {
+    this.userService.getById(this.userService.getLoggedinUserId()).then(user => {
       this.userFirstName = user[0].firstName;
       this.userLastName = user[0].lastName;
       this.userEmail = user[0].email;

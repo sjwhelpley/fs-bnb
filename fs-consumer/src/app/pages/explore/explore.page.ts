@@ -11,13 +11,24 @@ import { NavController } from '@ionic/angular';
 })
 export class ExplorePage {
   public listings: Listing[];
+  public images: string[][];
 
   constructor ( 
     private listingService: ListingService,
     private navCtrl: NavController 
-  ) {
+  ) { }
+
+  ionViewWillEnter() {
     this.listingService.getAll().then(listArr => {
       this.listings = listArr as Listing[];
+    });
+
+    this.listings.forEach(listing => {
+      this.listingService.getImages(listing.id).then((imgArr: string[]) => {
+        this.images[listing.id] = imgArr;
+      }).catch(err => {
+        console.log(err);
+      })
     });
   }
 

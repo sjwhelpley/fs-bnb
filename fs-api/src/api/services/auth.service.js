@@ -14,7 +14,7 @@ module.exports = class AuthService {
 
                 data.forEach(existingUser => {
                     if(existingUser.email === user.email) {
-                        reject("Email already in use.");
+                        reject(new Error("Email already in use"));
                     }
                 });
             });
@@ -46,7 +46,7 @@ module.exports = class AuthService {
                 });
             });
         }).catch(err => {
-            console.log(err);
+            return err;
         });
     }
 
@@ -57,7 +57,7 @@ module.exports = class AuthService {
 
                 data.forEach(existingUser => {
                     if(existingUser.email === user.email) {
-                        reject("Email already in use.");
+                        reject(new Error("Email already in use"));
                     }
                 });
             });
@@ -89,7 +89,7 @@ module.exports = class AuthService {
                 });
             });
         }).catch(err => {
-            console.log(err);
+            return err;
         });
     }
 
@@ -109,12 +109,13 @@ module.exports = class AuthService {
                 if(dbUser.length == 1) {
                     const match = bcrypt.compare(dbUser[0].password, password);
                     if(match) {
-                        const jwt = this.getJwtToken(dbUser[0], true);
-                        const authRes = {
-                            user: dbUser[0],
-                            jwt: jwt
-                        }
-                        resolve(authRes);
+                        this.getJwtToken(dbUser[0], true).then((token) => {
+                            const authRes = {
+                                user: dbUser[0],
+                                jwt: token
+                            }
+                            resolve(authRes);
+                        });
                     } else {
                         reject(new Error("Incorrect password"));
                     }       
@@ -123,7 +124,7 @@ module.exports = class AuthService {
                 }
             });
         }).catch(err => {
-            console.log(err);
+            return err;
         }); 
     }
 
@@ -148,8 +149,7 @@ module.exports = class AuthService {
                                 jwt: token
                             }
                             resolve(authRes);
-                        });
-                            
+                        });  
                     } else {
                         reject(new Error("Incorrect password"));
                     }
@@ -180,7 +180,7 @@ module.exports = class AuthService {
                         this.getJwtToken(dbUser[0], true).subscribe(token => {
                             const authRes = {
                                 user: dbUser[0],
-                                token: token
+                                jwt: token
                             }
                             resolve(authRes);
                         });     

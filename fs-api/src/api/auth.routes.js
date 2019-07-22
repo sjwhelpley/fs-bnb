@@ -5,11 +5,11 @@ const AuthService = require("./services/auth.service");
 const authService = new AuthService();
 
 router.post("/login/user", (req, res) => {
-  authService.login(req.body).then(result => {
+  authService.loginUser(req.body).then(result => {
     res.send(result);
   })
   .catch(err => {
-    res.status(400).json({ msg: err.message });
+    res.status(400).send(err);
   });
 });
 
@@ -18,7 +18,7 @@ router.post("/login/provider", (req, res) => {
     res.send(result);
   })
   .catch(err => {
-    res.status(400).json({ msg: err.message });
+    res.status(400).send(err);
   });
 });
 
@@ -27,7 +27,7 @@ router.post("/login/admin", (req, res) => {
     res.send(result);
   })
   .catch(err => {
-    res.status(400).json({ msg: err.message });
+    res.status(400).send(err);
   });
 });
 
@@ -36,7 +36,7 @@ router.post("/register/user", (req, res) => {
     res.send(result);
   })
   .catch(err => {
-    res.status(400).json({ msg: err.message });
+    res.sendStatus(400).send(err);
   });
 });
 
@@ -45,7 +45,7 @@ router.post("/register/provider", (req, res) => {
     res.send(result);
   })
   .catch(err => {
-    res.sendStatus(400).json({ msg: err.message });
+    res.sendStatus(400).send(err);
   });
 });
 
