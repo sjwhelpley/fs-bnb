@@ -14,7 +14,6 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       { path: 'explore', loadChildren: '../explore/explore.module#ExplorePageModule'},
-      { path: 'inbox', loadChildren: '../inbox/inbox.module#InboxPageModule'},
       { path: 'profile', loadChildren: '../profile/profile.module#ProfilePageModule'}
     ]
   },

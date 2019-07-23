@@ -12,13 +12,13 @@
         <ion-card (click)="viewListing(listing.id)" padding>
           <ion-slides *ngFor="let image of images[listing.id]">
             <ion-slide>
-              <img src="{{image}}" />
+              <img src={{image}} />
             </ion-slide>
           </ion-slides>
-          <h3>{{listing.title}}</h3><br>
-          {{listing.address}}<br>
-          {{listing.summary}}<br>
-          R{{listing.pricePerNight}}<br>
+          <h3>{{listing?.title}}</h3><br>
+          {{listing?.address}}<br>
+          {{listing?.summary}}<br>
+          R{{listing?.pricePerNight}}<br>
         </ion-card>
     </div>
   </ion-list>

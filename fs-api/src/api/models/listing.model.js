@@ -43,7 +43,8 @@ module.exports = class Listing {
     }
 
     update(id, listing, result) {
-        mysqlConn.query("UPDATE listing SET listing = ? WHERE id = ?", [listing, id], function(err, res) {
+        var params = [listing.homeType, listing.address, listing.maxNumPeople, listing.title, listing.summary, listing.pricePerNight, id];
+        mysqlConn.query("UPDATE listing SET homeType = ?, address = ?, maxNumPeople = ?, title = ?, summary = ?, pricePerNight = ? WHERE id = ?", params, function(err, res) {
             if (err) {
                 result(err, null);
             } else {

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 import { ListingService } from '../../services/listing.service';
-import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-create',
@@ -15,7 +15,6 @@ export class CreatePage {
   title: string;
   summary: string;
   pricePerNight: number;
-  rating: number;
   
   constructor(
     private listingService: ListingService,
@@ -23,8 +22,12 @@ export class CreatePage {
   ) { }
 
   createListing() {
-    this.listingService.create(this.homeType, this.address, this.maxNumPeople, this.title, this.summary, this.pricePerNight, this.rating).then(() => {
+    this.listingService.create(this.homeType, this.address, this.maxNumPeople, this.title, this.summary, this.pricePerNight, 0.0, parseInt(localStorage.getItem('userId'))).then(() => {
       this.navCtrl.navigateBack('tabs');
     });
+  }
+
+  back() {
+    this.navCtrl.navigateBack('/view');
   }
 }

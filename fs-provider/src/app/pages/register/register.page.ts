@@ -28,6 +28,10 @@ export class RegisterPage {
     });
   }
 
+  back() {
+    this.navCtrl.navigateBack('/login');
+  }
+
   async presentAlert(err) {
     const alert = await this.alertCtrl.create({
       header: 'Alert',

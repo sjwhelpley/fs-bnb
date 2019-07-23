@@ -7,6 +7,7 @@ import { Listing } from '../models/listing';
   providedIn: 'root'
 })
 export class ListingService { 
+  public view_listing: Listing;
 
   constructor(private http: HttpClient) { }
 
@@ -25,7 +26,37 @@ export class ListingService {
     });
   }
 
-  create(homeType, address, maxNumPeople, title, summary, pricePerNight, rating) {
+  getImgByListingId(id) {
+    return new Promise((resolve, reject) => {
+      const token = localStorage.getItem("jwt");
+      const httpOptions = { headers: new HttpHeaders(
+        {
+          'Content-Type':  'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      )};
+      this.http.get(`http://localhost:5000/api/listing/img/${id}`, httpOptions).subscribe((response) => {
+        resolve(response);
+      });
+    });
+  }
+
+  getById(id) {
+    return new Promise((resolve, reject) => {
+      const token = localStorage.getItem("jwt");
+      const httpOptions = { headers: new HttpHeaders(
+        {
+          'Content-Type':  'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      )};
+      this.http.get(`http://localhost:5000/api/listing/${id}`, httpOptions).subscribe((response) => {
+        resolve(response);
+      });
+    });
+  }
+
+  create(homeType, address, maxNumPeople, title, summary, pricePerNight, rating, id_provider) {
     const token = localStorage.getItem("jwt");
     const httpOptions = { headers: new HttpHeaders(
       {
@@ -33,9 +64,55 @@ export class ListingService {
         'Authorization': `Bearer ${token}`
       }
     )};
-    const newListing = new Listing(homeType, address, maxNumPeople, title, summary, pricePerNight, rating);
+    const newListing = new Listing(homeType, address, maxNumPeople, title, summary, pricePerNight, id_provider);
     return new Promise((resolve, reject) => {
       this.http.post('http://localhost:5000/api/listing/', JSON.stringify(newListing), httpOptions).subscribe((response) => {
+        resolve(response);
+      });
+    });
+  }
+
+  delete(id) {
+    const token = localStorage.getItem("jwt");
+    const httpOptions = { headers: new HttpHeaders(
+      {
+        'Content-Type':  'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    )};
+    return new Promise((resolve, reject) => {
+      this.http.delete(`http://localhost:5000/api/listing/delete/${id}`, httpOptions).subscribe((response) => {
+        resolve(response);
+      });
+    });
+  }
+
+  updateById(listing, id) {
+    return new Promise((resolve, reject) => {
+      const token = localStorage.getItem("jwt");
+      const httpOptions = { headers: new HttpHeaders(
+        {
+          'Content-Type':  'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      )};
+      console.log(JSON.stringify(listing));
+      this.http.patch(`http://localhost:5000/api/listing/update/${id}`, JSON.stringify(listing), httpOptions).subscribe((response) => {
+        resolve(response);
+      });
+    });
+  }
+
+  getViewListing(id) {
+    return new Promise((resolve, reject) => {
+      const token = localStorage.getItem("jwt");
+      const httpOptions = { headers: new HttpHeaders(
+        {
+          'Content-Type':  'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      )};
+      this.http.get(`http://localhost:5000/api/listing/${id}`, httpOptions).subscribe((response) => {
         resolve(response);
       });
     });

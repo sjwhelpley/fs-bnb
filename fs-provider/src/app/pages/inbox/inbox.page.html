@@ -1,9 +1,34 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Inbox</ion-title>
+    <ion-title>Booking Requests</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <p>You have no new messages.</p>
+  <h2>New Requests</h2>
+  <ion-list *ngFor="let booking of newBookings">
+    <ion-card padding>
+      {{booking?.startDate}}<br>
+      {{booking?.endDate}}<br>
+      <ion-button (click)="accept(booking.id)">ACCEPT</ion-button>
+      <ion-button (click)="reject(booking.id)">REJECT</ion-button>
+    </ion-card>
+  </ion-list>
+
+  <h2>Accepted Requests</h2>
+  <ion-list *ngFor="let booking of acceptedBookings">
+    <ion-card padding>
+      {{booking?.startDate}}<br>
+      {{booking?.endDate}}<br>
+    </ion-card>
+  </ion-list>
+
+  <h2>Rejected Requests</h2>
+  <ion-list *ngFor="let booking of rejectedBookings">
+    <ion-card padding>
+      {{booking?.startDate}}<br>
+      {{booking?.endDate}}<br>
+    </ion-card>
+  </ion-list>
+  <ion-button (click)="back()"><ion-icon name="arrow-back"></ion-icon></ion-button>
 </ion-content>

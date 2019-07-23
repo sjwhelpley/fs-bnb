@@ -1,19 +1,30 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>View Listing</ion-title>
+    <ion-title>
+      View Listing
+    </ion-title>
+    <ion-button slot="end" routerLink="/update">
+      <ion-icon name="create"></ion-icon>
+    </ion-button> 
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div padding>
-    <!--image-->
-    INSERT INFO HERE
-    {{item.name}}<br>
-    {{item.location}}<br>
-    {{item.price}}<br>
-    {{item.description}}
-  </div>
-  <ion-button expand="block" routerLink="/tabs/tab1">
-    <ion-icon name="arrow-round-back"></ion-icon>
-  </ion-button> 
+<ion-content padding>
+ 
+  <ion-list>
+    <ion-card>
+      <div padding>
+        <ion-slides *ngIf="imgUrls" pager="true" [options]="slideOpts">
+            <ion-slide *ngFor="let img of imgUrls">
+              <img src={{img}} />
+            </ion-slide>
+        </ion-slides>
+        <h3>{{listing?.title}}</h3><br>
+        {{listing?.address}}<br>
+        {{listing?.pricePerNight}}<br>
+      </div>
+    </ion-card>
+  </ion-list>
+  <ion-button (click)="back()"><ion-icon name="arrow-back"></ion-icon></ion-button>
+  <ion-button (click)="viewBookingRequests(listing.id)">BOOKING REQUESTS</ion-button>
 </ion-content>

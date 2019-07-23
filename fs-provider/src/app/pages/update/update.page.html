@@ -6,18 +6,37 @@
 
 <ion-content>
   <form>
-      <ion-item>
-        <ion-label>Name</ion-label>
-        <ion-input type="text" name="name"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Location</ion-label>
-        <ion-input type="text" name="location"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Description</ion-label>
-        <ion-textarea name="description"></ion-textarea>
-      </ion-item>
-      <button ion-button routerLink="/tabs/tab1" type="submit" block>Update</button>
-    </form>
+    <ion-item>
+      <ion-label>Title</ion-label>
+      <ion-input type="text" name="title" value="{{title}}" [(ngModel)]="title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Address</ion-label>
+      <ion-input type="text" name="address" value="{{address}}" [(ngModel)]="address"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Summary</ion-label>
+      <ion-textarea name="summary" value="{{summary}}" [(ngModel)]="summary"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Price</ion-label>
+      <ion-input name="price" value="{{pricePerNight}}" [(ngModel)]="pricePerNight"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Home Type</ion-label>
+      <ion-select placeholder="Select One" value="{{homeType}}" name="homeType" [(ngModel)]="homeType">
+        <ion-select-option value="house">House</ion-select-option>
+        <ion-select-option value="apartment">Apartment</ion-select-option>
+        <ion-select-option value="other">Other</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Max Number of People</ion-label>
+      <ion-input name="maxNumPeople" value="{{maxNumPeople}}" [(ngModel)]="maxNumPeople"></ion-input>
+    </ion-item>
+    <ion-button (click)="update()" type="submit" block>Update</ion-button>
+    <ion-button (click)="delete()" type="submit" block>Delete</ion-button>
+    <ion-button (click)="back()" type="submit" block>Cancel</ion-button>
+  </form>
 </ion-content>
+  

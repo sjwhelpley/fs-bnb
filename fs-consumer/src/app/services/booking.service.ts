@@ -25,7 +25,7 @@ export class BookingService {
     });
   }
 
-  create(numPeople, startDate, endDate, id_listing, id_user) {
+  create(numPeople, startDate, endDate, id_listing, id_user, status) {
     const token = localStorage.getItem("jwt");
     const httpOptions = { headers: new HttpHeaders(
       {
@@ -33,7 +33,7 @@ export class BookingService {
         'Authorization': `Bearer ${token}`
       }
     )};
-    const newBooking = new Booking(numPeople, startDate, endDate, id_listing, id_user);
+    const newBooking = new Booking(numPeople, startDate, endDate, id_listing, id_user, status);
     return new Promise((resolve, reject) => {
       this.http.post('http://localhost:5000/api/booking/', JSON.stringify(newBooking), httpOptions).subscribe((response) => {
         resolve(response);

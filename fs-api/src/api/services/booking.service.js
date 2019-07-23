@@ -23,7 +23,6 @@ module.exports = class BookingService {
 
     getByUserId(id) {
         return new Promise((resolve, reject) => {
-            console.log("In booking service with user id" + id);
             Booking.prototype.getByUserId(id, (err, res) => {
                 if(err) reject(err);
                 resolve(res);

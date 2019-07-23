@@ -6,10 +6,9 @@ export class Listing {
     title: string;
     summary: string;
     pricePerNight: number;
-    rating: number;
     id_provider: number;
 
-    constructor(homeType, address, maxNumPeople, title, summary, pricePerNight, rating) {
+    constructor(homeType, address, maxNumPeople, title, summary, pricePerNight, id_provider) {
         this.id;
         this.homeType = homeType;
         this.address = address;
@@ -17,7 +16,6 @@ export class Listing {
         this.title = title;
         this.summary = summary;
         this.pricePerNight = pricePerNight;
-        this.rating = rating;
-        this.id_provider;
+        this.id_provider = id_provider;
     }
 }

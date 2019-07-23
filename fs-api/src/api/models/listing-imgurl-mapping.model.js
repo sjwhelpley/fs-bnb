@@ -8,7 +8,7 @@ module.exports = class ListingImgUrl {
     }
 
     getAll(result) {
-        mysqlConn.query("SELECT * FROM listingImgUrl", function(err, res) {
+        mysqlConn.query("SELECT * FROM listing_imgurl_mapping", function(err, res) {
             if (err) {
                 console.log("error: ", err);
                 result(err, null);
@@ -20,7 +20,7 @@ module.exports = class ListingImgUrl {
     }
     
     getByListingId(id, result) {
-        mysqlConn.query("SELECT imgUrl FROM listingImgUrl WHERE id_listing = ? ", id, function(err, res) {
+        mysqlConn.query("SELECT imgUrl FROM listing_imgurl_mapping WHERE id_listing = ? ", id, function(err, res) {
             if (err) {
                 console.log("error: ", err);
                 result(err, null);
@@ -31,7 +31,7 @@ module.exports = class ListingImgUrl {
     }
     
     create(newListingImgUrl, result) {
-        mysqlConn.query("INSERT INTO listingImgUrl set ?", newListingImgUrl, function(err, res) {
+        mysqlConn.query("INSERT INTO listing_imgurl_mapping set ?", newListingImgUrl, function(err, res) {
             if (err) {
                 console.log("error: ", err);
                 result(err, null);
@@ -42,7 +42,7 @@ module.exports = class ListingImgUrl {
     }
     
     update(id, listingImgUrl, result) {
-        mysqlConn.query("UPDATE listingImgUrl SET listingImgUrl = ? WHERE id = ?", [listingImgUrl, id], function(err, res) {
+        mysqlConn.query("UPDATE listing_imgurl_mapping SET listing_imgurl_mapping = ? WHERE id = ?", [listingImgUrl, id], function(err, res) {
             if (err) {
                 console.log("error: ", err);
                 result(null, err);
@@ -52,8 +52,8 @@ module.exports = class ListingImgUrl {
         });
     }
     
-    delete (id, result) {
-        mysqlConn.query("DELETE FROM listingImgUrl WHERE id = ?", id, function(err, res) {
+    delete(id, result) {
+        mysqlConn.query("DELETE FROM listing_imgurl_mapping WHERE id = ?", id, function(err, res) {
             if (err) {
                 console.log("error: ", err);
                 result(null, err);

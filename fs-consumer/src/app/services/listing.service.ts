@@ -123,7 +123,7 @@ async presentAlert(id_listing) {
       {
         text: 'Book',
         handler: data => {
-          this.bookingService.create(data.numPeople, data.startDate, data.endDate, id_listing, localStorage.getItem("userId"));
+          this.bookingService.create(data.numPeople, data.startDate, data.endDate, id_listing, localStorage.getItem("userId"), "NEW");
         }
       }
     ]

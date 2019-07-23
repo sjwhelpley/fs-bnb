@@ -7,21 +7,34 @@
 <ion-content>
   <form>
     <ion-item>
-      <ion-label>Name</ion-label>
-      <ion-input type="text" name="name" [(ngModel)]="name"></ion-input>
+      <ion-label>Title</ion-label>
+      <ion-input type="text" name="title" [(ngModel)]="title"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Location</ion-label>
-      <ion-input type="text" name="location" [(ngModel)]="location"></ion-input>
+      <ion-label>Address</ion-label>
+      <ion-input type="text" name="address" [(ngModel)]="address"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Summary</ion-label>
+      <ion-input name="summary" [(ngModel)]="summary"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Price</ion-label>
-      <ion-input name="price" [(ngModel)]="price"></ion-input>
+      <ion-input name="price" [(ngModel)]="pricePerNight"></ion-input>
     </ion-item>
     <ion-item>
-        <ion-label>Image</ion-label>
-        <ion-input name="image" [(ngModel)]="imgUrl"></ion-input>
-      </ion-item>
+      <ion-label>Home Type</ion-label>
+      <ion-select placeholder="Select One" name="homeType" [(ngModel)]="homeType">
+        <ion-select-option value="house">House</ion-select-option>
+        <ion-select-option value="apartment">Apartment</ion-select-option>
+        <ion-select-option value="other">Other</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Max Number of People</ion-label>
+      <ion-input name="maxNumPeople" [(ngModel)]="maxNumPeople"></ion-input>
+    </ion-item>
     <ion-button (click)="createListing()" type="submit" block>Create</ion-button>
+    <ion-button (click)="back()" type="submit" block>Cancel</ion-button>
   </form>
 </ion-content>
