@@ -36,7 +36,7 @@ export class RegisterPage {
     const alert = await this.alertCtrl.create({
       header: 'Alert',
       subHeader: 'Failed to register',
-      message: err,
+      message: err.message,
       buttons: ['OK']
     });
 

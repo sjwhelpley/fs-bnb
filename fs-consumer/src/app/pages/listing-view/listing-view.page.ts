@@ -10,11 +10,22 @@ import { NavController } from '@ionic/angular';
 })
 export class ListingViewPage {
   listing: Listing;
+  imgUrls: any[] = [];
 
   constructor(
     private listingService: ListingService,
     private navCtrl: NavController
-  ) { }
+  ) {
+    this.listingService.getViewListing().then((list: Listing[]) => {
+      this.listing = list[0];
+
+      this.listingService.getImgByListingId(this.listing.id).then((imgArr: any) => {
+          imgArr.forEach(url => {
+            this.imgUrls.push(url.imgUrl);
+          });
+        });
+      });
+  }
 
   backToExplore() {
     this.navCtrl.navigateBack('tabs/explore')
@@ -22,11 +33,5 @@ export class ListingViewPage {
 
   book(id_listing) {
     this.listingService.presentAlert(id_listing);
-  }
-
-  ionViewWillEnter() { 
-    this.listingService.getViewListing().then((list: Listing[]) => {
-      this.listing = list[0];
-    });
   }
 }

@@ -46,7 +46,7 @@ export class ListingService {
     });
   }
 
-  getImages(id) {
+  getImgByListingId(id) {
     return new Promise((resolve, reject) => {
       const token = localStorage.getItem("jwt");
       const httpOptions = { headers: new HttpHeaders(
@@ -96,38 +96,38 @@ export class ListingService {
     });
   }
 
-async presentAlert(id_listing) {
-  let alert = await this.alertCtrl.create({
-    header: 'Book Now',
-    inputs: [
-      {
-        name: 'numPeople',
-        placeholder: 'Number of People'
-      },
-      {
-        name: 'startDate',
-        placeholder: 'Start Date',
-        type: 'date'
-      },
-      {
-        name: 'endDate',
-        placeholder: 'End Date',
-        type: 'date'
-      }
-    ],
-    buttons: [
-      {
-        text: 'Cancel',
-        role: 'cancel',
-      },
-      {
-        text: 'Book',
-        handler: data => {
-          this.bookingService.create(data.numPeople, data.startDate, data.endDate, id_listing, localStorage.getItem("userId"), "NEW");
+  async presentAlert(id_listing) {
+    let alert = await this.alertCtrl.create({
+      header: 'Book Now',
+      inputs: [
+        {
+          name: 'numPeople',
+          placeholder: 'Number of People'
+        },
+        {
+          name: 'startDate',
+          placeholder: 'Start Date',
+          type: 'date'
+        },
+        {
+          name: 'endDate',
+          placeholder: 'End Date',
+          type: 'date'
         }
-      }
-    ]
-  });
-  await alert.present();
-}
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+        },
+        {
+          text: 'Book',
+          handler: data => {
+            this.bookingService.create(data.numPeople, data.startDate, data.endDate, id_listing, localStorage.getItem("userId"), "NEW");
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
 }

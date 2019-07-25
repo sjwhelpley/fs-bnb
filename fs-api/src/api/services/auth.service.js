@@ -45,8 +45,6 @@ module.exports = class AuthService {
                     resolve(authRes);
                 });
             });
-        }).catch(err => {
-            return err;
         });
     }
 
@@ -88,8 +86,6 @@ module.exports = class AuthService {
                     resolve(authRes);
                 });
             });
-        }).catch(err => {
-            return err;
         });
     }
 
@@ -101,31 +97,31 @@ module.exports = class AuthService {
 
             User.prototype.getAllUsers((err, data) => {
                 if (err) reject(err);
+                else {
+                    let dbUser = data.filter(user => {
+                        return user.email == email;
+                    }); 
 
-                let dbUser = data.filter(user => {
-                    return user.email == email;
-                }); 
-
-                if(dbUser.length == 1) {
-                    const match = bcrypt.compare(dbUser[0].password, password);
-                    if(match) {
-                        this.getJwtToken(dbUser[0], true).then((token) => {
-                            const authRes = {
-                                user: dbUser[0],
-                                jwt: token
+                    if(dbUser.length == 1) {
+                        bcrypt.compare(password, dbUser[0].password).then(res => {
+                            if(res == true) {
+                                this.getJwtToken(dbUser[0], true).then((token) => {
+                                    const authRes = {
+                                        user: dbUser[0],
+                                        jwt: token
+                                    }
+                                    resolve(authRes);
+                                });  
+                            } else {
+                                reject(new Error("Incorrect password"));
                             }
-                            resolve(authRes);
-                        });
+                        });        
                     } else {
-                        reject(new Error("Incorrect password"));
-                    }       
-                } else {
-                    reject(new Error("User does not exist"));
+                        reject(new Error("User does not exist"));
+                    }
                 }
             });
-        }).catch(err => {
-            return err;
-        }); 
+        });
     }
 
     loginProvider(authUser) {
@@ -135,30 +131,30 @@ module.exports = class AuthService {
 
             User.prototype.getAllProviders((err, data) => {
                 if(err) reject(err);
+                else {
+                    let dbUser = data.filter(user => {
+                        return user.email == email;
+                    }); 
 
-                let dbUser = data.filter(user => {
-                    return user.email == email;
-                }); 
-
-                if(dbUser.length == 1) {
-                    const match = bcrypt.compare(dbUser[0].password, password);
-                    if(match) {
-                        this.getJwtToken(dbUser[0], true).then((token) => {
-                            const authRes = {
-                                user: dbUser[0],
-                                jwt: token
+                    if(dbUser.length == 1) {
+                        bcrypt.compare(password, dbUser[0].password).then(res => {
+                            if(res == true) {
+                                this.getJwtToken(dbUser[0], true).then((token) => {
+                                    const authRes = {
+                                        user: dbUser[0],
+                                        jwt: token
+                                    }
+                                    resolve(authRes);
+                                });  
+                            } else {
+                                reject(new Error("Incorrect password"));
                             }
-                            resolve(authRes);
                         });  
                     } else {
-                        reject(new Error("Incorrect password"));
+                        reject(new Error("User does not exist"));
                     }
-                } else {
-                    reject(new Error("User does not exist"));
                 }
             });
-        }).catch(err => {
-            console.log(err);
         });
     }
 
@@ -175,24 +171,23 @@ module.exports = class AuthService {
                 }); 
 
                 if(dbUser.length == 1) {
-                    const match = bcrypt.compare(dbUser[0].password, password);
-                    if(match) {
-                        this.getJwtToken(dbUser[0], true).subscribe(token => {
-                            const authRes = {
-                                user: dbUser[0],
-                                jwt: token
-                            }
-                            resolve(authRes);
-                        });     
-                    } else {
-                        reject(new Error("Incorrect password"));
-                    }
+                    bcrypt.compare(password, dbUser[0].password).then(res => {
+                        if(res == true) {
+                            this.getJwtToken(dbUser[0], true).then((token) => {
+                                const authRes = {
+                                    user: dbUser[0],
+                                    jwt: token
+                                }
+                                resolve(authRes);
+                            });  
+                        } else {
+                            reject(new Error("Incorrect password"));
+                        }
+                    });      
                 } else {
-                    reject(new Error("User does not exist"));
+                reject(new Error("User does not exist"));
                 }
             });
-        }).catch(err => {
-            console.log(err);
         });
     }
 

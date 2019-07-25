@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../models/user.model';
-import { UserService } from '../../services/user.service';
+
+import { Listings } from '../../models/listings';
+import { ListingService } from 'src/app/services/listing.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  selector: 'app-listings',
+  templateUrl: './listings.component.html',
+  styleUrls: ['./listings.component.scss']
 })
-export class UsersComponent implements OnInit {
+export class ListingsComponent implements OnInit {
   navItems: Array<any> = [
     {
       name: 'Home',
@@ -32,15 +33,15 @@ export class UsersComponent implements OnInit {
     }
   ];
 
-  users: User[];
+  listings: Listings[];
 
   constructor(
-    private userService: UserService,
+    private listingService: ListingService,
     private router: Router
-  ) { 
-    this.userService.getAll().then((response: any) => {
-      this.users = response;
-    });
+  ) {
+    this.listingService.getAll().then((listArr: any) => {
+      this.listings = listArr;
+    })
   }
 
   ngOnInit() {
@@ -49,4 +50,5 @@ export class UsersComponent implements OnInit {
   navTo(page) {
     this.router.navigate([page.route]);
   }
+
 }

@@ -53,7 +53,7 @@ module.exports = class ListingImgUrl {
     }
     
     delete(id, result) {
-        mysqlConn.query("DELETE FROM listing_imgurl_mapping WHERE id = ?", id, function(err, res) {
+        mysqlConn.query("DELETE FROM listing_imgurl_mapping WHERE id_listing = ?", id, function(err, res) {
             if (err) {
                 console.log("error: ", err);
                 result(null, err);

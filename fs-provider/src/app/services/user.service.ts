@@ -19,10 +19,14 @@ export class UserService {
     return new Promise((resolve, reject) => {
       let data = `{"email":"${email}","password":"${password}"}`;
       this.http.post('http://localhost:5000/api/auth/login/provider', data, httpOptions).subscribe((response: any) => {
-        localStorage.setItem('userId', response.user.id);
-        localStorage.setItem('jwt', response.jwt);
-        resolve(response);
-      });
+          localStorage.setItem('userId', response.user.id);
+          localStorage.setItem('jwt', response.jwt);
+          resolve(response);
+        }, 
+        (err) => {
+          reject(err);
+        }
+      );
     });
   }
 
@@ -38,6 +42,9 @@ export class UserService {
         localStorage.setItem("userId", response.user.id);
         localStorage.setItem("jwt", response.jwt);
         resolve(response);
+      }, 
+      (err) => {
+        reject(err);
       });
     });
   }

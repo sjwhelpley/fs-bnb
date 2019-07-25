@@ -9,7 +9,8 @@ router.post("/login/user", (req, res) => {
     res.send(result);
   })
   .catch(err => {
-    res.status(400).send(err);
+    res.statusMessage = err.message;
+    res.status(400).end();
   });
 });
 
@@ -18,7 +19,8 @@ router.post("/login/provider", (req, res) => {
     res.send(result);
   })
   .catch(err => {
-    res.status(400).send(err);
+    res.statusMessage = err.message;
+    res.status(400).end();
   });
 });
 
@@ -27,7 +29,8 @@ router.post("/login/admin", (req, res) => {
     res.send(result);
   })
   .catch(err => {
-    res.status(400).send(err);
+    res.statusMessage = err.message;
+    res.status(400).end();
   });
 });
 
@@ -36,7 +39,8 @@ router.post("/register/user", (req, res) => {
     res.send(result);
   })
   .catch(err => {
-    res.sendStatus(400).send(err);
+    res.statusMessage = err.message;
+    res.status(400).end();
   });
 });
 
@@ -45,7 +49,8 @@ router.post("/register/provider", (req, res) => {
     res.send(result);
   })
   .catch(err => {
-    res.sendStatus(400).send(err);
+    res.statusMessage = err.message;
+    res.status(400).end();
   });
 });
 

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -9,13 +12,30 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
   }
 
   login() {
-
+    this.userService.login(this.email, this.password).then((response) => {
+      this.router.navigate(['home']);
+    }).catch(err => {
+      alert(err.message);
+    });
   }
 
+  /* async presentAlert(err) {
+    const alert = await this.alertCtrl.create({
+      header: 'Alert',
+      subHeader: 'Failed to login',
+      message: err.message,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  } */
 }

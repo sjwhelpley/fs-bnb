@@ -46,8 +46,10 @@ export class UpdatePage implements OnInit {
 
   delete() {
     this.listingService.delete(this.list.id).then(() => {
-      this.navCtrl.navigateBack('/tabs/explore');
-    })
+      this.listingService.deleteImgByListingId(this.list.id).then(() => {
+        this.navCtrl.navigateBack('/tabs/explore');
+      });
+    });
   }
 
   back() {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceProvider } from '../../models/service-provider.model'
+import { User } from '../../models/user.model'
 import { ServiceProviderService } from '../../services/service-provider.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-service-providers',
@@ -8,16 +9,45 @@ import { ServiceProviderService } from '../../services/service-provider.service'
   styleUrls: ['./service-providers.component.scss']
 })
 export class ServiceProvidersComponent implements OnInit {
+  navItems: Array<any> = [
+    {
+      name: 'Home',
+      route: '/home'
+    },
+    {
+      name: 'Users',
+      route: '/users'
+    },
+    {
+      name: 'Service Providers',
+      route: '/service-providers'
+    },
+    {
+      name: 'Listings',
+      route: '/listings'
+    },
+    {
+      name: 'Booking Requests',
+      route: '/booking-requests'
+    }
+  ];
   
-  serviceProviders: Array<ServiceProvider>;
+  providers: User[];
 
   constructor( 
-    private spService: ServiceProviderService
+    private spService: ServiceProviderService,
+    private router: Router
   ) {
-    this.serviceProviders = this.spService.getServiceProviders();
+    this.spService.getAll().then((spArr: any) => {
+      this.providers = spArr;
+    });
   }
 
   ngOnInit() {
+  }
+
+  navTo(page) {
+    this.router.navigate([page.route]);
   }
 
 }

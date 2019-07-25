@@ -15,16 +15,18 @@
       Explore Airbnb
     </ion-button>
   </div>
+  <div *ngIf="bookings">
   <div *ngIf="bookings.length != 0">
     <ion-list>
         <div *ngFor="let booking of bookings, let i = index">
             <ion-card padding>
-              <h3>{{listings[i].title}}</h3><br>
-              {{listings[i].address}}<br>
-              {{booking.numPeople}} people<br>
-              {{booking.startDate}} to {{booking.endDate}}<br>
+              <h3>{{listings[i]?.title}}</h3><br>
+              {{listings[i]?.address}}<br>
+              {{booking?.numPeople}} people<br>
+              {{booking?.startDate}} to {{booking?.endDate}}<br>
             </ion-card>
         </div>
       </ion-list>
   </div>
+</div>
 </ion-content>

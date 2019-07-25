@@ -87,6 +87,21 @@ export class ListingService {
     });
   }
 
+  deleteImgByListingId(id) {
+    const token = localStorage.getItem("jwt");
+    const httpOptions = { headers: new HttpHeaders(
+      {
+        'Content-Type':  'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    )};
+    return new Promise((resolve, reject) => {
+      this.http.delete(`http://localhost:5000/api/listing/delete/img/${id}`, httpOptions).subscribe((response) => {
+        resolve(response);
+      });
+    });
+  }
+
   updateById(listing, id) {
     return new Promise((resolve, reject) => {
       const token = localStorage.getItem("jwt");
@@ -96,7 +111,6 @@ export class ListingService {
           'Authorization': `Bearer ${token}`
         }
       )};
-      console.log(JSON.stringify(listing));
       this.http.patch(`http://localhost:5000/api/listing/update/${id}`, JSON.stringify(listing), httpOptions).subscribe((response) => {
         resolve(response);
       });

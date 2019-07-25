@@ -5,11 +5,11 @@ import { Booking } from 'src/app/models/booking';
 import { BookingService } from 'src/app/services/booking.service';
 
 @Component({
-  selector: 'app-inbox',
-  templateUrl: './inbox.page.html',
-  styleUrls: ['./inbox.page.scss'],
+  selector: 'app-bookings',
+  templateUrl: './bookings.page.html',
+  styleUrls: ['./bookings.page.scss'],
 })
-export class InboxPage implements OnInit {
+export class BookingsPage implements OnInit {
   newBookings: Booking[];
   acceptedBookings: Booking[];
   rejectedBookings: Booking[];

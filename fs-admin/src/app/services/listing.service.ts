@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { ServiceProvider } from '../models/service-provider.model'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ServiceProviderService {
-  serviceProviders: Array<ServiceProvider>;
+export class ListingService {
 
   constructor(
     private http: HttpClient
@@ -21,7 +19,7 @@ export class ServiceProviderService {
           'Authorization': `Bearer ${token}`
         }
       )};
-      this.http.get('http://localhost:5000/api/user/', httpOptions).subscribe((response) => {
+      this.http.get('http://localhost:5000/api/listing/', httpOptions).subscribe((response) => {
         resolve(response);
       });
     });

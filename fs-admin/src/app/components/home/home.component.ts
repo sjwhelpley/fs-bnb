@@ -7,10 +7,36 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  navItems: Array<any> = [
+    {
+      name: 'Home',
+      route: '/home'
+    },
+    {
+      name: 'Users',
+      route: '/users'
+    },
+    {
+      name: 'Service Providers',
+      route: '/service-providers'
+    },
+    {
+      name: 'Listings',
+      route: '/listings'
+    },
+    {
+      name: 'Booking Requests',
+      route: '/booking-requests'
+    }
+  ];
 
   constructor(
     private router: Router
   ) { }
 
   ngOnInit() { }
+
+  navTo(page) {
+    this.router.navigate([page.route]);
+  }
 }

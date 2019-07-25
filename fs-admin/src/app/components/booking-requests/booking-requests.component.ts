@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../models/user.model';
-import { UserService } from '../../services/user.service';
+import { BookingService } from 'src/app/services/booking.service';
+import { Bookings } from 'src/app/models/bookings';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  selector: 'app-booking-requests',
+  templateUrl: './booking-requests.component.html',
+  styleUrls: ['./booking-requests.component.scss']
 })
-export class UsersComponent implements OnInit {
+export class BookingRequestsComponent implements OnInit {
   navItems: Array<any> = [
     {
       name: 'Home',
@@ -31,16 +31,16 @@ export class UsersComponent implements OnInit {
       route: '/booking-requests'
     }
   ];
-
-  users: User[];
+  
+  bookings: Bookings[];
 
   constructor(
-    private userService: UserService,
+    private bookingService: BookingService,
     private router: Router
   ) { 
-    this.userService.getAll().then((response: any) => {
-      this.users = response;
-    });
+    this.bookingService.getAll().then((bookArr: any) => {
+      this.bookings = bookArr;
+    })
   }
 
   ngOnInit() {
@@ -49,4 +49,5 @@ export class UsersComponent implements OnInit {
   navTo(page) {
     this.router.navigate([page.route]);
   }
+
 }

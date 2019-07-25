@@ -3,30 +3,20 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { UsersComponent } from './components/users/users.component';
 import { ServiceProvidersComponent } from './components/service-providers/service-providers.component';
-import { DashBoardComponent } from './components/dash-board/dash-board.component';
-import { RegisterComponent } from './components/register/register.component';
+import { ListingsComponent } from './components/listings/listings.component';
+import { BookingRequestsComponent} from './components/booking-requests/booking-requests.component';
 import { LoginComponent } from './components/login/login.component';
 
-/* const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'users', component: UsersComponent },
-  { path: 'service-providers', component: ServiceProvidersComponent }
-];
-
-const appRoutes: Routes = [
-  { path: '', component: DashBoardComponent }
-]; */
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: "full"},
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'dashboard', component: DashBoardComponent, children: [
-     { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'users', component: UsersComponent },
-  { path: 'service-providers', component: ServiceProvidersComponent }
-  ]}
-];
+  { path: 'service-providers', component: ServiceProvidersComponent },
+  { path: 'listings', component: ListingsComponent },
+  { path: 'booking-requests', component: BookingRequestsComponent }
+]; 
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

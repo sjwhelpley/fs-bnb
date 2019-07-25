@@ -39,6 +39,6 @@ export class ViewPage implements OnInit {
   // Set Listing to get booking requests from & navigate to Booking-view page
   viewBookingRequests(id) {
     this.bookingService.setBookingListingId(id);
-    this.navCtrl.navigateForward('/inbox');
+    this.navCtrl.navigateForward('/bookings');
   }
 }

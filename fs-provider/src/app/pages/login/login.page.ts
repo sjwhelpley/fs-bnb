@@ -35,7 +35,7 @@ export class LoginPage {
     const alert = await this.alertCtrl.create({
       header: 'Alert',
       subHeader: 'Failed to login',
-      message: err,
+      message: err.message,
       buttons: ['OK']
     });
 

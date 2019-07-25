@@ -1,2 +1,36 @@
-<h3>Home</h3>
+<div>
+
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-sm-4 col-md-3 mr-0" href="#">FS BnB Admin Panel</a>
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="#">Sign out</a>
+        </li>
+      </ul>
+    </nav>
+  
+    <div style="margin-top:40px; height: calc(100vh - 40px);" class="container-fluid">
+      <div style="margin-top:40px; height: calc(100vh - 40px);" class="row">
+  
+        <nav class="col-md-2 d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li *ngFor="let navItem of navItems" >
+                <button type="button" class="btn btn-link" (click)="navTo(navItem)">{{navItem.name}}</button>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div class="flex-column col-md-10">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">Home</h1>
+          </div>
+          <div class="table-responsive">
+  
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
 
