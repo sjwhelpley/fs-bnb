@@ -10,6 +10,7 @@
 | Provider mobile app | List of Properties | fs-airbnb\fs-provder\src\pages\explore        |
 | Provider mobile app | List of Bookings   | fs-airbnb\fs-provider\src\pages\bookings      |
 | Admin Panel         | Users              | fs-airbnb\fs-admin\src\app\components\users   |
+| Admin Panel         | Service Providers  | fs-airbnb\fs-admin\src\app\components\service-providers   |
 | Admin Panel         | Bookings           | fs-airbnb\fs-admin\src\app\components\bookings|
-| API                 | Users              | fs-airbnb\fs-api\src\pages\users              |
-| API                 | Bookings           | fs-airbnb\fs-api\src\pages\bookings           |
+| API                 | Users              | fs-airbnb\fs-api\src\api\user.routes          |
+| API                 | Bookings           | fs-airbnb\fs-api\src\api\booking.routes       |
