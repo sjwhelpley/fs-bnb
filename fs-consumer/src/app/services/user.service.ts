@@ -8,7 +8,9 @@ import { User } from '../models/user';
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  constructor (
+    private http: HttpClient
+  ) { }
 
   login(email, password) {
     const httpOptions = {

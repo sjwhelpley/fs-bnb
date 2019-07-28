@@ -12,6 +12,7 @@ module.exports = class Listing {
         this.id_provider;
     }
     
+    // GET
     getAll(result) {
         mysqlConn.query("SELECT * FROM listing", function(err, res) {
             if (err) {
@@ -32,6 +33,7 @@ module.exports = class Listing {
         });
     }
 
+    // CREATE
     create(newListing, result) {
         mysqlConn.query("INSERT INTO listing set ?", newListing, function(err, res) {
             if (err) {
@@ -42,6 +44,7 @@ module.exports = class Listing {
         });      
     }
 
+    // UPDATE
     update(id, listing, result) {
         var params = [listing.homeType, listing.address, listing.maxNumPeople, listing.title, listing.summary, listing.pricePerNight, id];
         mysqlConn.query("UPDATE listing SET homeType = ?, address = ?, maxNumPeople = ?, title = ?, summary = ?, pricePerNight = ? WHERE id = ?", params, function(err, res) {
@@ -53,6 +56,7 @@ module.exports = class Listing {
         });
     }
 
+    // DELETE
     delete(id, result) {
         mysqlConn.query("DELETE FROM listing WHERE id = ?", id, function(err, res) {
             if (err) {

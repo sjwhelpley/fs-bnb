@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ListingService {
 
-  constructor(
+  constructor (
     private http: HttpClient
   ) { }
 

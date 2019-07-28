@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
 
-  constructor(
+  constructor (
     private router: Router,
     private userService: UserService
   ) { }
@@ -27,15 +27,4 @@ export class LoginComponent implements OnInit {
       alert(err.message);
     });
   }
-
-  /* async presentAlert(err) {
-    const alert = await this.alertCtrl.create({
-      header: 'Alert',
-      subHeader: 'Failed to login',
-      message: err.message,
-      buttons: ['OK']
-    });
-
-    await alert.present();
-  } */
 }

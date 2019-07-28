@@ -3,6 +3,7 @@ var Booking = require("../models/booking.model");
 module.exports = class BookingService {
     constructor() { }
 
+    // GET
     getAll() { 
         return new Promise((resolve, reject) => {
             Booking.prototype.getAll((err, res) => {
@@ -30,6 +31,7 @@ module.exports = class BookingService {
         });
     }
 
+    // CREATE
     create(newBooking) { 
         return new Promise((resolve, reject) => {
             Booking.prototpye.create(newBooking, (err, res) => {
@@ -39,6 +41,7 @@ module.exports = class BookingService {
         });
     }
 
+    // UPDATE
     update(id) { 
         return new Promise((resolve, reject) => {
             Booking.prototype.update(id, (err, res) => {
@@ -48,6 +51,7 @@ module.exports = class BookingService {
         });
     }
 
+    // DELETE
     delete(id) { 
         return new Promise((resolve, reject) => {
             Booking.prototype.delete(id, (err, res) => {

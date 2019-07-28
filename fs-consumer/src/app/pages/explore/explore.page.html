@@ -9,16 +9,16 @@
 <ion-content padding>
   <ion-list>
     <div *ngFor="let listing of listings">
-        <ion-card (click)="viewListing(listing.id)" padding>
-          <ion-slides *ngIf="imgUrls">
-            <ion-slide *ngFor="let img of imgUrls[listing.id]">
-              <img src={{img}} />
-            </ion-slide>
-          </ion-slides>
-          <h3>{{listing?.title}}</h3>
-          <p>{{listing?.address}}</p>
-          <p>R{{listing?.pricePerNight}} per night</p>
-        </ion-card>
+      <ion-card (click)="viewListing(listing.id)" padding>
+        <ion-slides *ngIf="imgUrls">
+          <ion-slide *ngFor="let img of imgUrls[listing.id]">
+            <img src={{img}} />
+          </ion-slide>
+        </ion-slides>
+        <h3>{{listing?.title}}</h3>
+        <p>{{listing?.address}}</p>
+        <p>R{{listing?.pricePerNight}} per night</p>
+      </ion-card>
     </div>
   </ion-list>
 </ion-content>

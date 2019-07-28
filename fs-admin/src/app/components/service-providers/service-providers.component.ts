@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../models/user.model'
-import { ServiceProviderService } from '../../services/service-provider.service'
 import { Router } from '@angular/router';
+
+import { User } from '../../models/user.model';
+import { ServiceProviderService } from '../../services/service-provider.service';
 
 @Component({
   selector: 'app-service-providers',
@@ -34,7 +35,7 @@ export class ServiceProvidersComponent implements OnInit {
   
   providers: User[];
 
-  constructor( 
+  constructor ( 
     private spService: ServiceProviderService,
     private router: Router
   ) {
@@ -49,5 +50,4 @@ export class ServiceProvidersComponent implements OnInit {
   navTo(page) {
     this.router.navigate([page.route]);
   }
-
 }

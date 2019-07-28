@@ -34,13 +34,13 @@ export class BookingRequestsComponent implements OnInit {
   
   bookings: Bookings[];
 
-  constructor(
+  constructor (
     private bookingService: BookingService,
     private router: Router
   ) { 
     this.bookingService.getAll().then((bookArr: any) => {
       this.bookings = bookArr;
-    })
+    });
   }
 
   ngOnInit() {

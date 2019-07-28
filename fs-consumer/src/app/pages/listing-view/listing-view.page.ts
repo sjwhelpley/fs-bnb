@@ -12,7 +12,7 @@ export class ListingViewPage {
   listing: Listing;
   imgUrls: any[] = [];
 
-  constructor(
+  constructor (
     private listingService: ListingService,
     private navCtrl: NavController
   ) {
@@ -20,11 +20,11 @@ export class ListingViewPage {
       this.listing = list[0];
 
       this.listingService.getImgByListingId(this.listing.id).then((imgArr: any) => {
-          imgArr.forEach(url => {
-            this.imgUrls.push(url.imgUrl);
-          });
+        imgArr.forEach(url => {
+          this.imgUrls.push(url.imgUrl);
         });
       });
+    });
   }
 
   backToExplore() {

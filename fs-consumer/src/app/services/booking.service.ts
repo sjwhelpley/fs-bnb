@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { Booking } from '../models/booking';
 
 @Injectable({
@@ -7,7 +8,9 @@ import { Booking } from '../models/booking';
 })
 export class BookingService {
 
-  constructor(private http: HttpClient) { }
+  constructor (
+    private http: HttpClient
+  ) { }
 
   getBookingsByUserId() {
     return new Promise((resolve, reject) => {

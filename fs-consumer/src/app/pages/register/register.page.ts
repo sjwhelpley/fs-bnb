@@ -15,10 +15,11 @@ export class RegisterPage {
   email: String;
   password: String;
 
-  constructor( 
+  constructor ( 
     private navCtrl: NavController,
     private alertCtrl: AlertController,
-    private userService: UserService ) { }
+    private userService: UserService 
+  ) { }
 
   register() {
     this.userService.register(this.firstName, this.lastName, this.cellPhone, this.email, this.password).then(() =>{

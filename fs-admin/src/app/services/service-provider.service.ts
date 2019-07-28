@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ServiceProviderService {
   serviceProviders: Array<ServiceProvider>;
 
-  constructor(
+  constructor (
     private http: HttpClient
   ) { }
 

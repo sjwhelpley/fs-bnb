@@ -3,6 +3,7 @@ const router = express.Router();
 
 const Booking = require("./models/booking.model");
 
+// GET
 router.get("/", (req, res) => {
   Booking.prototype.getAll((err, result) => {
     if(err) res.status(400).json({ msg: err.message });
@@ -38,6 +39,7 @@ router.get("/listing/status/:id/:status", (req, res) => {
     });
 });
 
+// CREATE
 router.post("/", (req, res) => {
   Booking.prototype.create(req.body, (err, result) => {
     if(err) {
@@ -48,6 +50,7 @@ router.post("/", (req, res) => {
   });
 });
 
+// UPDATE
 router.patch("/update/:id", (req, res) => {
   Booking.prototype.update(req.params.id, req.body, (err, result) => {
     if(err) res.status(400).json({ msg: err.message });
@@ -62,6 +65,7 @@ router.patch("/update/status/:id", (req, res) => {
   });
 });
 
+// DELETE
 router.get("/delete/:id", (req, res) => {
   Booking.prototype.delete(req.body, (err, result) => {
     if(err) res.status(400).json({ msg: err.message });

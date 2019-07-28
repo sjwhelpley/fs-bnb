@@ -12,6 +12,7 @@ module.exports = class Booking {
         this.status = status;
     }
 
+    // GET
     getAll(result) {
         mysqlConn.query("SELECT * FROM booking", function(err, res) {
             if (err) {
@@ -62,6 +63,7 @@ module.exports = class Booking {
         });
     }
 
+    // CREATE
     create(newBooking, result) {
         mysqlConn.query("INSERT INTO booking SET ?", newBooking, function(err, res) {
             if (err) {
@@ -72,6 +74,7 @@ module.exports = class Booking {
         });      
     }
 
+    // UPDATE
     update(id, booking, result) {
         mysqlConn.query("UPDATE booking SET booking = ? WHERE id = ?", [booking, id], function(err, res) {
             if (err) {
@@ -93,6 +96,7 @@ module.exports = class Booking {
         });
     }
 
+    // DELETE
     delete(id, result) {
         mysqlConn.query("DELETE FROM booking WHERE id = ?", id, function(err, res) {
             if (err) {

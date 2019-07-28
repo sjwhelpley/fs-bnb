@@ -3,6 +3,7 @@ var ListingImgUrl = require("../models/listing-imgurl-mapping.model");
 module.exports = class ListingImgUrlService {
     constructor() { }
 
+    // GET
     getAll() { 
         return new Promise((resolve, reject) => {
             ListingImgUrl.prototype.getAll((err, res) => {
@@ -21,6 +22,7 @@ module.exports = class ListingImgUrlService {
         });
     }
 
+    // CREATE
     create(newListingImgUrl) { 
         return new Promise((resolve, reject) => {
             ListingImgUrl.prototype.create(newListingImgUrl, (err, res) => {
@@ -30,6 +32,7 @@ module.exports = class ListingImgUrlService {
         });
     }
 
+    // UPDATE
     update(id) { 
         return new Promise((resolve, reject) => {
             ListingImgUrl.prototype.update(id, (err, res) => {
@@ -39,6 +42,7 @@ module.exports = class ListingImgUrlService {
         });
     }
 
+    // DELETE
     delete(id) { 
         return new Promise((resolve, reject) => {
             ListingImgUrl.prototype.delete(id, (err, res) => {

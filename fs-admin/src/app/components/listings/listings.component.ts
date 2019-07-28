@@ -35,13 +35,13 @@ export class ListingsComponent implements OnInit {
 
   listings: Listings[];
 
-  constructor(
+  constructor (
     private listingService: ListingService,
     private router: Router
   ) {
     this.listingService.getAll().then((listArr: any) => {
       this.listings = listArr;
-    })
+    });
   }
 
   ngOnInit() {

@@ -11,10 +11,11 @@ import { BookingService } from './booking.service';
 export class ListingService { 
   viewListingId: number;
 
-  constructor(
+  constructor (
     private http: HttpClient,
     private alertCtrl: AlertController,
-    private bookingService: BookingService ) { }
+    private bookingService: BookingService 
+  ) { }
 
   getAll() {
     return new Promise((resolve, reject) => {

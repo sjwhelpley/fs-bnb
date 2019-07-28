@@ -4,6 +4,7 @@ const router = express.Router();
 const AuthService = require("./services/auth.service");
 const authService = new AuthService();
 
+// LOGIN
 router.post("/login/user", (req, res) => {
   authService.loginUser(req.body).then(result => {
     res.send(result);
@@ -34,6 +35,7 @@ router.post("/login/admin", (req, res) => {
   });
 });
 
+// REGISTER
 router.post("/register/user", (req, res) => {
   authService.registerUser(req.body).then(result => {
     res.send(result);
