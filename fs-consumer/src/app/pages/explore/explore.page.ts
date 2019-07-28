@@ -32,6 +32,22 @@ export class ExplorePage {
     });
   }
 
+  ionViewWillEnter() {
+    this.listingService.getAll().then(listArr => {
+      this.listings = listArr as Listing[];
+
+      this.listings.forEach(listing => {
+        this.listingService.getImgByListingId(listing.id).then((imgArr: any) => {
+          let urlArr: string[] = [];
+          imgArr.forEach(url => {
+            urlArr.push(url.imgUrl);
+          });
+          this.imgUrls[listing.id] = urlArr;
+        });
+      });
+    });
+  }
+
   viewListing(id_listing) {
     this.listingService.setViewListingId(id_listing);
     this.navCtrl.navigateForward('listing-view');

@@ -6,10 +6,14 @@
 
 <ion-content padding>
   <ion-item>
-    <ion-label><h1>Hello, {{userFirstName}} {{userLastName}}</h1></ion-label>
-    <ion-avatar slot="end">
+    <ion-avatar slot="start">
       <img src="../../../assets/profile.png">
-    </ion-avatar> 
+    </ion-avatar>
+    <ion-label text-wrap>
+      <ion-text>
+        <h1>Hello, {{userFirstName}} {{userLastName}}</h1>
+      </ion-text>
+    </ion-label> 
   </ion-item>
   <ion-item>
       <h2>Account Information</h2>

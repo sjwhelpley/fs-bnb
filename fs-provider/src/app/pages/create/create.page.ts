@@ -9,6 +9,7 @@ import { ListingService } from '../../services/listing.service';
   styleUrls: ['./create.page.scss'],
 })
 export class CreatePage {
+
   homeType: string;
   address: string;
   maxNumPeople: number;

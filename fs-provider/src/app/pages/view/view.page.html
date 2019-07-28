@@ -3,7 +3,7 @@
     <ion-title>
       View Listing
     </ion-title>
-    <ion-button slot="end" routerLink="/update">
+    <ion-button style="padding-right:10px" slot="end" routerLink="/update">
       <ion-icon name="create"></ion-icon>
     </ion-button> 
   </ion-toolbar>
@@ -19,9 +19,10 @@
               <img src={{img}} />
             </ion-slide>
         </ion-slides>
-        <h3>{{listing?.title}}</h3><br>
-        {{listing?.address}}<br>
-        {{listing?.pricePerNight}}<br>
+        <h3>{{listing?.title}}</h3>
+        <p>{{listing?.address}}</p>
+        <p>{{listing?.summary}}</p>
+        <p>R{{listing?.pricePerNight}} per night</p>
       </div>
     </ion-card>
   </ion-list>

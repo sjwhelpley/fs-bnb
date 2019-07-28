@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ListingService } from '../../services/listing.service';
 import { Listing } from 'src/app/models/listing';
@@ -19,6 +19,22 @@ export class ExplorePage {
     private listingService: ListingService,
     private navCtrl: NavController
   ) {
+    this.listingService.getAll().then(listArr => {
+      this.listings = listArr as Listing[];
+      
+      this.listings.forEach(listing => {
+        this.listingService.getImgByListingId(listing.id).then((imgArr: any) => {
+          let urlArr: string[] = [];
+          imgArr.forEach(url => {
+            urlArr.push(url.imgUrl);
+          });
+          this.imgUrls[listing.id] = urlArr;
+        });
+      });
+    });
+  }
+
+  ionViewWillEnter() {
     this.listingService.getAll().then(listArr => {
       this.listings = listArr as Listing[];
       

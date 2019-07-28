@@ -10,7 +10,7 @@ import { BookingService } from 'src/app/services/booking.service';
   templateUrl: './view.page.html',
   styleUrls: ['./view.page.scss'],
 })
-export class ViewPage implements OnInit {
+export class ViewPage {
   listing: Listing;
   imgUrls: any[];
   
@@ -20,7 +20,7 @@ export class ViewPage implements OnInit {
     private bookingService: BookingService
   ) { }
 
-  ngOnInit() { 
+  ionViewWillEnter() { 
     this.listing = this.listingService.view_listing;
     this.listingService.getImgByListingId(this.listing.id).then((imgArr: any) => {
       let urlArr: string[] = [];

@@ -27,4 +27,16 @@ export class TripsPage {
       }
     });
   }  
+
+  ionViewWillEnter() {
+    this.bookingService.getBookingsByUserId().then(bookArr => {
+      this.bookings = bookArr as Booking[];
+      
+      for(let i = 0; i < this.bookings.length; i++) {
+        this.listingService.getById(this.bookings[i].id_listing).then(listArr => {
+          this.listings.push(listArr[0]);
+        });
+      }
+    });
+  }
 }
