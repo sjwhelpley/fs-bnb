@@ -34,6 +34,13 @@ router.post("/", (req, res) => {
   });
 });
 
+router.post("/img", (req, res) => {
+  ListingImgUrl.prototype.create(req.body, (err, result) => {
+    if(err) res.status(400).json({ msg: err.message });
+    else res.send(result);
+  });
+});
+
 // UPDATE
 router.patch("/update/:id", (req, res) => {
   Listing.prototype.update(req.params.id, req.body, (err, result) => {

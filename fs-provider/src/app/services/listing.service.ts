@@ -72,6 +72,22 @@ export class ListingService {
     });
   }
 
+  createImgUrl(imgUrl, id_listing) {
+    const token = localStorage.getItem("jwt");
+    const httpOptions = { headers: new HttpHeaders(
+      {
+        'Content-Type':  'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    )};
+    const imgUrlString = `{"imgUrl": "${imgUrl}", "id_listing": "${id_listing}"}`;
+    return new Promise((resolve, reject) => {
+      this.http.post('http://localhost:5000/api/listing/img', imgUrlString, httpOptions).subscribe((response) => {
+        resolve(response);
+      });
+    });
+  }
+
   delete(id) {
     const token = localStorage.getItem("jwt");
     const httpOptions = { headers: new HttpHeaders(

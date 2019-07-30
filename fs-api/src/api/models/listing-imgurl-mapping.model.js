@@ -30,7 +30,8 @@ module.exports = class ListingImgUrl {
     
     // CREATE
     create(newListingImgUrl, result) {
-        mysqlConn.query("INSERT INTO listing_imgurl_mapping set ?", newListingImgUrl, function(err, res) {
+        let newImgUrl = new ListingImgUrl(newListingImgUrl.id_listing, newListingImgUrl.imgUrl);
+        mysqlConn.query("INSERT INTO listing_imgurl_mapping set ?", newImgUrl, function(err, res) {
             if (err) {
                 result(err, null);
             } else {

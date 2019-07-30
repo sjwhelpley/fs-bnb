@@ -34,6 +34,10 @@
       <ion-label>Max Number of People</ion-label>
       <ion-input name="maxNumPeople" [(ngModel)]="maxNumPeople"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label>Image URL</ion-label>
+      <ion-input name="imgUrl" [(ngModel)]="imgUrl"></ion-input>
+    </ion-item>
     <ion-button (click)="createListing()" type="submit" block>Create</ion-button>
     <ion-button (click)="back()" type="submit" block>Cancel</ion-button>
   </form>

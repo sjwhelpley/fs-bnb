@@ -9,13 +9,13 @@ import { ListingService } from '../../services/listing.service';
   styleUrls: ['./create.page.scss'],
 })
 export class CreatePage {
-
   homeType: string;
   address: string;
   maxNumPeople: number;
   title: string;
   summary: string;
   pricePerNight: number;
+  imgUrl: string;
   
   constructor(
     private listingService: ListingService,
@@ -23,8 +23,10 @@ export class CreatePage {
   ) { }
 
   createListing() {
-    this.listingService.create(this.homeType, this.address, this.maxNumPeople, this.title, this.summary, this.pricePerNight, 0.0, parseInt(localStorage.getItem('userId'))).then(() => {
-      this.navCtrl.navigateBack('tabs');
+    this.listingService.create(this.homeType, this.address, this.maxNumPeople, this.title, this.summary, this.pricePerNight, 0.0, parseInt(localStorage.getItem('userId'))).then((response: any) => {
+      this.listingService.createImgUrl(this.imgUrl, response.insertId).then(() => {
+        this.navCtrl.navigateBack('tabs');
+      });
     });
   }
 
