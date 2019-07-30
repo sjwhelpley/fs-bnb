@@ -49,6 +49,13 @@ router.patch("/update/:id", (req, res) => {
   });
 });
 
+router.patch("/update/img/:id", (req, res) => {
+  ListingImgUrl.prototype.update(req.params.id, req.body, (err, result) => {
+    if(err) res.status(400).json({ msg: err.message });
+    else res.send(result);
+  });
+});
+
 // DELETE
 router.delete("/delete/:id", (req, res) => {
   Listing.prototype.delete(req.params.id, (err, result) => {

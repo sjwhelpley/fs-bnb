@@ -133,6 +133,21 @@ export class ListingService {
     });
   }
 
+  updateImgByListingId(imgUrl, id_listing) {
+    return new Promise((resolve, reject) => {
+      const token = localStorage.getItem("jwt");
+      const httpOptions = { headers: new HttpHeaders(
+        {
+          'Content-Type':  'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      )};
+      this.http.patch(`http://localhost:5000/api/listing/update/img/${id_listing}`, JSON.stringify(imgUrl), httpOptions).subscribe((response) => {
+        resolve(response);
+      });
+    });
+  }
+
   getViewListing(id) {
     return new Promise((resolve, reject) => {
       const token = localStorage.getItem("jwt");

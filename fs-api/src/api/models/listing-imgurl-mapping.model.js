@@ -42,7 +42,7 @@ module.exports = class ListingImgUrl {
     
     // UPDATE
     update(id, listingImgUrl, result) {
-        mysqlConn.query("UPDATE listing_imgurl_mapping SET listing_imgurl_mapping = ? WHERE id = ?", [listingImgUrl, id], function(err, res) {
+        mysqlConn.query("UPDATE listing_imgurl_mapping SET imgUrl = ? WHERE id_listing = ?", [listingImgUrl, id], function(err, res) {
             if (err) {
                 result(null, err);
             } else {

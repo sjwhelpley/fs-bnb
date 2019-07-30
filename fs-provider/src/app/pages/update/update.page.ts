@@ -17,6 +17,7 @@ export class UpdatePage implements OnInit {
   summary: string;
   pricePerNight: number;
   id_provider: number;
+  imgUrl: string;
 
   constructor(
     private listingService: ListingService,
@@ -35,13 +36,18 @@ export class UpdatePage implements OnInit {
     this.summary = this.list.summary;
     this.pricePerNight = this.list.pricePerNight;
     this.id_provider = this.list.id_provider;
+    this.listingService.getImgByListingId(this.list.id).then((img: any) => {
+      this.imgUrl = img;
+    })
   }
 
   update() {
     let updatedListing = new Listing(this.homeType, this.address, this.maxNumPeople, this.title, this.summary, this.pricePerNight, this.id_provider);
     this.listingService.updateById(updatedListing, this.list.id).then(() => {
-      this.navCtrl.navigateBack('/view');
-    })
+      this.listingService.updateImgByListingId(this.imgUrl, this.list.id).then(() => {
+        this.navCtrl.navigateBack('/view');
+      });
+    });
   }
 
   delete() {
