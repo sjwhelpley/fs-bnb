@@ -95,7 +95,7 @@ CREATE TABLE `listing` (
   PRIMARY KEY (`id`),
   KEY `FK_ProviderListing_idx` (`id_provider`),
   CONSTRAINT `FK_ProviderListing` FOREIGN KEY (`id_provider`) REFERENCES `provider` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,7 +104,7 @@ CREATE TABLE `listing` (
 
 LOCK TABLES `listing` WRITE;
 /*!40000 ALTER TABLE `listing` DISABLE KEYS */;
-INSERT INTO `listing` VALUES (1,'Beautiful Home in Camps Bay','Come and take advantage of this beautiful space, right across from the beach. This place is awesome.','32 Camps Bay Dr, Cape Town, South Africa','House','4','400',1);
+INSERT INTO `listing` VALUES (1,'Beautiful Home in Camps Bay','Come and take advantage of this beautiful space, right across from the beach. This place is awesome.','32 Camps Bay Dr, Cape Town, South Africa','House','4','400',1),(2,'Great Apartment in Sea Point','Ocean views! Spacious!','42 Sea Point Rd, Cape Town, South Africa','Apartment','5','500',1);
 /*!40000 ALTER TABLE `listing` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,7 +120,7 @@ CREATE TABLE `listing_imgurl_mapping` (
   `id_listing` int(6) unsigned NOT NULL,
   `imgUrl` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -129,7 +129,7 @@ CREATE TABLE `listing_imgurl_mapping` (
 
 LOCK TABLES `listing_imgurl_mapping` WRITE;
 /*!40000 ALTER TABLE `listing_imgurl_mapping` DISABLE KEYS */;
-INSERT INTO `listing_imgurl_mapping` VALUES (1,1,'..\\..\\..\\assets\\home1.jpg'),(2,1,'..\\..\\..\\assets\\home2.jpg');
+INSERT INTO `listing_imgurl_mapping` VALUES (1,1,'..\\..\\..\\assets\\home1.jpg'),(2,1,'..\\..\\..\\assets\\home2.jpg'),(3,2,'https://images.prop24.com/FetchImage.ashx?uid=178833269');
 /*!40000 ALTER TABLE `listing_imgurl_mapping` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -157,7 +157,7 @@ CREATE TABLE `provider` (
 
 LOCK TABLES `provider` WRITE;
 /*!40000 ALTER TABLE `provider` DISABLE KEYS */;
-INSERT INTO `provider` VALUES (1,'Sam','Whelpley','440440440','sam@mail.com','$2a$10$ehl6Y3ePR5SmG3lvApZJdOmHYHKxHX0zsEJmmcDDhZz5tUWkxVeea'),(27,'Sam','Whelpley','fhjsdhfjhsd','sjw@mail.com','$2a$10$P8UPomW/aumC./vNvyFhcuOdXzwEFrIcgTM3x3kGHIbORSlJShCEK');
+INSERT INTO `provider` VALUES (1,'Sam','Whelpley','440440440','sam@mail.com','$2a$10$ehl6Y3ePR5SmG3lvApZJdOmHYHKxHX0zsEJmmcDDhZz5tUWkxVeea');
 /*!40000 ALTER TABLE `provider` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,4 +198,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-07-29 16:32:41
+-- Dump completed on 2019-08-02  8:48:34
