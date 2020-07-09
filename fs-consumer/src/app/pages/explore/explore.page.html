@@ -1,12 +1,6 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Explore
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content padding>
+<ion-content>
+  <div class="top-space"></div>
+  <ion-searchbar value="Cape Town, South Africa"></ion-searchbar>
   <ion-list>
     <div *ngFor="let listing of listings">
       <ion-card (click)="viewListing(listing.id)" padding>

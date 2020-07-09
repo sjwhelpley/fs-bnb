@@ -1,15 +1,16 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title>
       View Listing
     </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content padding>
-  <ion-list>
-    <ion-card>
-      <div padding>
+  <ion-button (click)="backToExplore()"><ion-icon name="arrow-back"></ion-icon></ion-button>
+  <ion-list padding>
+    <!-- <ion-card> -->
+      <div>
         <ion-slides *ngIf="imgUrls">
           <ion-slide *ngFor="let img of imgUrls">
             <img src={{img}} />
@@ -20,8 +21,7 @@
         <p>{{listing?.summary}}</p>
         <p>R{{listing?.pricePerNight}} per night</p>
       </div>
-    </ion-card>
+    <!-- </ion-card> -->
   </ion-list>
-  <ion-button (click)="backToExplore()"><ion-icon name="arrow-back"></ion-icon></ion-button>
   <ion-button (click)="book(listing.id)">Book Now</ion-button>
 </ion-content>

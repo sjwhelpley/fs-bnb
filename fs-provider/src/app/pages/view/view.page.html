@@ -1,8 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      View Listing
-    </ion-title>
+    <ion-button style="padding-left:10px" (click)="back()" slot="start"><ion-icon name="arrow-back"></ion-icon></ion-button>
     <ion-button style="padding-right:10px" slot="end" routerLink="/update">
       <ion-icon name="create"></ion-icon>
     </ion-button> 
@@ -10,9 +8,7 @@
 </ion-header>
 
 <ion-content padding>
- 
   <ion-list>
-    <ion-card>
       <div padding>
         <ion-slides *ngIf="imgUrls" pager="true" [options]="slideOpts">
             <ion-slide *ngFor="let img of imgUrls">
@@ -24,8 +20,6 @@
         <p>{{listing?.summary}}</p>
         <p>R{{listing?.pricePerNight}} per night</p>
       </div>
-    </ion-card>
   </ion-list>
-  <ion-button (click)="back()"><ion-icon name="arrow-back"></ion-icon></ion-button>
   <ion-button (click)="viewBookingRequests(listing.id)">BOOKING REQUESTS</ion-button>
 </ion-content>

@@ -37,7 +37,7 @@ export class UpdatePage implements OnInit {
     this.pricePerNight = this.list.pricePerNight;
     this.id_provider = this.list.id_provider;
     this.listingService.getImgByListingId(this.list.id).then((img: any) => {
-      this.imgUrl = img;
+      this.imgUrl = img[0].imgUrl;
     })
   }
 

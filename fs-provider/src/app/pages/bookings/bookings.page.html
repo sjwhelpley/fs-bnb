@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Booking Requests</ion-title>
+    <ion-button style="padding-left:10px" (click)="back()" slot="start"><ion-icon name="arrow-back"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -30,5 +30,4 @@
         <p>{{booking?.startDate | date: 'dd/MM/yyyy' }} to {{booking?.endDate | date: 'dd/MM/yyyy' }}</p>
     </ion-card>
   </ion-list>
-  <ion-button (click)="back()"><ion-icon name="arrow-back"></ion-icon></ion-button>
 </ion-content>
